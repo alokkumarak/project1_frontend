@@ -4,6 +4,8 @@ import CourseDetail from "./CourseDetail";
 import Login from './User/Login';
 import Register from './User/Register';
 import Dashboard from './User/Dashboard';
+import Mycourses from './User/MyCourses';
+
 import Footer from './Footer';
 
 import { Routes as Switch,Route } from 'react-router-dom';
@@ -17,7 +19,8 @@ function Main() {
           <Route path="/detail/:course_id" element={<CourseDetail />}/>
           <Route path="/user-login" element={<Login/>}/>
           <Route path="/user-register" element={<Register/>}/>
-          <Route path="/user-Dashboard" element={<Dashboard/>}/>
+          <Route path="/user-dashboard" element={<Dashboard/>}/>
+          <Route path="/my-courses" element={<Mycourses/>}/>
         </Switch>
          
         <Footer/>
