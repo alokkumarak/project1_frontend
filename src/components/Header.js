@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 function Header() {
     return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container">
                 <Link className="navbar-brand" to="/">Edupedia</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,13 +39,6 @@ function Header() {
                             <li><a className="dropdown-item" href="#">Log Out</a></li>
                         </ul>
                     </li>
-
-                
-
-        
-
-
-
                     </ul>
                 </div>
                 </div>

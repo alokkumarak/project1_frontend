@@ -1,6 +1,7 @@
 
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import TeacherDetail from "./TeacherDetails";
 function CourseDetail(){
     let {course_id}=useParams();
     return(
@@ -19,7 +20,7 @@ function CourseDetail(){
                     remaining essentially unchanged.
                 </p>
 
-                <p className="fw-bold">Course By:<a href="#">Teacher</a></p>
+                <p className="fw-bold">Course By:<Link to="/teacher-detail/1">Teacher</Link></p>
                 <p className="fw-bold">Duration: 3 Hours 45 Minutes</p>
                 <p className="fw-bold">Total Enrolled: 456 Students</p>
                 <p className="fw-bold">Rating: 4.5/5</p>

@@ -10,7 +10,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <Link to="/detail/1" ><img src="logo512.png" className="card-img-top" alt="..."/></Link>
+                <Link to="/detail/1" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></Link>
                 <div className="card-body">
                   <h5 className="card-title"><Link to="/detail/1"> Course title</Link></h5>
 
@@ -22,7 +22,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -34,7 +34,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -46,7 +46,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -65,7 +65,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -77,7 +77,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -89,7 +89,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -101,7 +101,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Course title</a></h5>
 
@@ -120,7 +120,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#">Teacher</a></h5>
 
@@ -132,7 +132,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Teacher </a></h5>
 
@@ -144,7 +144,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#"> Teacher </a></h5>
 
@@ -156,7 +156,7 @@ function Home() {
         <div className="col-md-3">
 
             <div className="card">
-                <a href="#" ><img src="logo512.png" className="card-img-top" alt="..."/></a>
+                <a href="#" ><img src="logo512.png" className="card-img-top img-fluid" alt="..."/></a>
                 <div className="card-body">
                   <h5 className="card-title"><a href="#">Teacher</a></h5>
 

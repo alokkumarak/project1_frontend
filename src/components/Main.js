@@ -12,6 +12,7 @@ import TeacherDashboard from './Teacher/TeacherDashboard';
 import Courses from './Teacher/Courses';
 import MyUsers from './Teacher/MyUsers';
 import AddCourses from './Teacher/AddCourses';
+import TeacherDetail from './TeacherDetails';
 
 
 import Footer from './Footer';
@@ -35,8 +36,8 @@ function Main() {
           <Route path="/courses" element={<Courses/>}/>
           <Route path="/my-users" element={<MyUsers/>}/>
           <Route path="/add-courses" element={<AddCourses/>}/>
+          <Route path="/teacher-detail/:teacher_id" element={<TeacherDetail/>}/>
         </Switch>
-         
         <Footer/>
       </div>
     );
