@@ -34,7 +34,29 @@ function CourseDetail(){
                 Course Videos
             </h5>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">Introduction<button className="btn btn-sm btn-secondary float-end">Play</button></li>
+                <li className="list-group-item">Introduction<button className="btn btn-sm btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Play</button>
+                
+                
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Video1</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                    </div>
+                    </div>
+                
+
+
+                </li>
                 <li className="list-group-item">Set up Project<button className="btn btn-sm btn-secondary float-end">Play</button></li>
                 <li className="list-group-item">Start with functional components<button className="btn btn-sm btn-secondary float-end">Play</button></li>
                 <li className="list-group-item">Introduction<button className="btn btn-sm btn-secondary float-end">Play</button></li>
