@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 function Header() {
     return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
                 <Link className="navbar-brand" to="/">Edupedia</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,6 +9,12 @@ function Header() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
+
+                    <form className="d-flex ms-auto ms-auto" role="search">
+                    <input className="form-control me-2" type="search" placeholder="Search Courses" aria-label="Search"/>
+                    <button className="btn btn-outline-secondary btn-info" type="submit">Search</button>
+                   </form>
+    
                     <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                     </li>
