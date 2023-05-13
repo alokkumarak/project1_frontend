@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&display=swap");
+
+.screen_controlsMiddle > .MuiButtonBase-root {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  padding: 10px !important;
+}
+.screen_controlsMiddle > .MuiButtonBase-root > .MuiSvgIcon-root {
+  color: white !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.playerWrapper {
+  width: 100%;
+  object-fit: contain;
+  position: relative;
+}
+
+.controlsWrapper {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 99%;
+  padding: 0px 30px;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bottomIcons > .MuiSvgIcon-root {
+  color: white !important;
+  height: 35px !important;
+  width: 35px !important;
+}
+.controls_bottomL {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex;
+  border-radius: 5px !important;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+.bottomIcons {
+  border-radius: 5px !important;
+  cursor: pointer;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+}
+.bottomIcons:hover {
+  border-radius: 5px !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.volumeSlider {
+  margin-left: 10px !important;
+  width: 100px !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.fullScreen_controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.screen_controlTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  margin-top: -5px;
+  color: white;
+}
+
+.screen_controlsMiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-right: 5px;
+}
+
+.screen_controlBottom {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  align-items: center;
+}
+.control_progress {
+  display: flex;
+  justify-content: center;
+  width: 99%;
+  margin-bottom: 5px;
+}
+
+.controls_bottomBottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.controlls_bottomLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timimggg {
+  color: white;
+  margin-left: 16px;
+  font-size: 12px;
+}
+
+/* progressbar design */
+.MuiSlider-root {
+  margin: 10px 0px 10px 0px !important;
+  padding: 0px 0px !important;
+  height: 5px !important;
+  color: red !important;
+}
+
+.MuiSlider-track {
+  height: 4px !important;
+}
+.MuiSlider-rail {
+  color: white !important;
+  height: 4px !important;
+}
+.WithStyles\(ForwardRef\(Slider\)\)-track-5 {
+  height: 6px !important;
+}
+.WithStyles\(ForwardRef\(Slider\)\)-rail-6 {
+  height: 5px !important;
+}
+.WithStyles\(ForwardRef\(Slider\)\)-thumb-2 {
+  background-color: red !important;
+}
+.MuiSlider-thumb {
+  color: red !important;
+  box-shadow: red 0px 0px 0px 3px !important;
+}
+.WithStyles\(ForwardRef\(Slider\)\)-thumb-14 {
+  background-color: red !important;
+  height: 15px !important;
+  width: 15px !important;
+  margin-top: -6px !important;
+}
+
+.controll_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+/* video player end */
+
+@media screen and (max-width: 1700px) {
+  .playerWrapper {
+    max-width: unset;
+    min-width: 700px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .playerWrapper {
+    max-width: unset;
+    min-width: 600px;
+  }
+
+  .control_progress {
+    width: 95%;
+    margin-left: -30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .playerWrapper {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .controlsWrapper {
+    height: 100%;
+  }
+
+  .bottomIcons > .MuiIconButton-label {
+    color: #999;
+  }
+  .controls_bottomL {
+    margin-top: -5px;
+  }
+  .bottomIcons {
+    width: 40px;
+    height: 35px;
+  }
+
+  .volumeSlider {
+    width: 70px !important;
+  }
+  .screen_controlTop {
+    margin-top: 20px;
+  }
+
+  .screen_controlBottom {
+    padding: 14px;
+  }
+  .control_progress {
+    margin-top: 20px;
+    width: 370px;
+  }
+
+  .controls_bottomBottom {
+    width: 370px;
+  }
+
+  .timimggg {
+    font-size: 11px;
+  }
+
+  .controll_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+}
+
+/* volume indicator and all */
+.rhap_volume-container {
+  margin-right: 30px;
+}
+
+.rhap_volume-bar {
+  background: rgb(241, 92, 92) !important;
+}
+.rhap_volume-indicator {
+  background-color: red !important;
+  box-shadow: red 0px 0px 0px 4px !important;
+}
+.rhap_volume-filled {
+  background-color: red !important;
+}
+
+.rhap_volume-controls {
+  max-width: 200px !important;
+}
+
+/* play rewind forword */
+.rhap_main-controls {
+  width: 300px !important;
+  padding: 5px 0 !important;
+}
+.rhap_main-controls-button {
+  margin: 0 10px !important;
+}
+
+/* ... */
+.rhap_repeat-button {
+  display: none !important;
+}
+
+/* timeline progress bar */
+.rhap_progress-filled {
+  background-color: red !important;
+}
+.rhap_progress-indicator {
+  background-color: red !important;
+}
+.rhap_progress-indicator:hover {
+  box-shadow: rgb(235, 20, 20) 0px 0px 0px 4px !important;
+}
+.rhap_download-progress {
+  background: rgb(241, 92, 92) !important;
+}
+.rhap_time {
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+.rhap_button-clear {
+  margin-right: 5px !important;
+}
+
+/* video player preview */
+.react-player__preview {
+  width: 755px !important;
+  border-radius: 20px;
+}
+#widget2 {
+  width: 750px !important;
+}
+
+/* report */
+.MuiDialog-paperWidthSm {
+  max-width: 500px !important;
+}
+
+.MuiListItemButton-root {
+  padding: 6px 15px !important;
+}
+.MuiListItemText-root {
+  margin-left: 20px !important;
+}
+.MuiListItemText-root > .MuiTypography-root {
+  font-size: 17px !important;
+  color: rgb(56, 55, 55) !important;
+}
+.MuiListItemButton-root > .MuiSvgIcon-root {
+  font-size: 14px !important;
+  color: rgb(56, 55, 55) !important;
+}
