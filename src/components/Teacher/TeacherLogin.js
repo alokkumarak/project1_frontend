@@ -6,7 +6,7 @@ function TeacherLogin(){
         <div className="row">
             <div className="col-6 offset-3">
                 <div className="card">
-                    <h5 className="card-header">User Login</h5>
+                    <h5 className="card-header">Teacher Login</h5>
                     <div className="card-body">
                         <form>
                             <div className="mb-3">

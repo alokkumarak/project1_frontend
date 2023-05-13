@@ -25,8 +25,8 @@ function AddCourses(){
 
 
                             <div className="mb-3">
-                                <label for="title" className="form-label">Course Video</label>
-                                <input type="file" accept="video/*" name="video" className="form-control"/>
+                                <label for="title" className="form-label">Thumbnail</label>
+                                <input type="file" accept="jpeg/*" name="thumbnail" className="form-control"/>
                             </div>
 
 

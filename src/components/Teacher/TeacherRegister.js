@@ -6,7 +6,7 @@ function TeacherRegister(){
         <div className="row">
             <div className="col-6 offset-3">
                 <div className="card">
-                    <h5 className="card-header">User Register</h5>
+                    <h5 className="card-header"> Teacher Register</h5>
                     <div className="card-body">
                         <form>
                             
