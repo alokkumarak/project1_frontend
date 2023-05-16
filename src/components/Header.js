@@ -13,14 +13,20 @@ function Header() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/all-courses">Courses</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/user-login">Login</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/user-register">Signup</Link>
+                    </li>
 
                     <li className="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Teacher
                         </a>
                         <ul className="dropdown-menu">
-                            <Link className="dropdown-item" to="/teacher-login">Log In</Link>
-                            <Link className="dropdown-item" to="/teacher-register">Register</Link>
+                            {/* <Link className="dropdown-item" to="/teacher-login">Log In</Link>
+                            <Link className="dropdown-item" to="/teacher-register">Register</Link> */}
                             <Link className="dropdown-item" to="/teacher-Dashboard">Dashboard</Link>
                             <li><a className="dropdown-item" href="#">Log Out</a></li>
                         </ul>
@@ -31,8 +37,8 @@ function Header() {
                             Student
                         </a>
                         <ul className="dropdown-menu">
-                            <Link className="dropdown-item" to="/user-login">Log In</Link>
-                            <Link className="dropdown-item" to="/user-register">Register</Link>
+                            {/* <Link className="dropdown-item" to="/user-login">Log In</Link>
+                            <Link className="dropdown-item" to="/user-register">Register</Link> */}
                             <Link className="dropdown-item" to="/user-Dashboard">Dashboard</Link>
                             <li><a className="dropdown-item" href="#">Log Out</a></li>
                         </ul>
