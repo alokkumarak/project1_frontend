@@ -2,10 +2,19 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 function AllCourses(){
     return(
+ <>
+      <div class="input-group mx-auto my-5 w-50">
+        <input
+          type="search"
+          id="form1"
+          placeholder="Search Courses"
+          class="form-control"
+        />
 
-        <div className="mt-4">
-
-                <h3 className="text-center mx-4"><u>All Courses</u></h3>
+        <button type="button" class="btn btn-primary btn-outline-secondary">
+          Search
+        </button>
+      </div>
 
                 <div class="input-group mx-auto my-5 w-50">
                         <input type="search" id="form1" placeholder="Search Courses" class="form-control" />
@@ -64,9 +73,8 @@ function AllCourses(){
                 <Card/>
                 </div>
             </div>
-
-        </div>
-    );
+            </>
+  );
 }
 
 export default AllCourses;
