@@ -3,48 +3,45 @@ import {Link} from "react-router-dom";
 function Register(){
     return(
         <div className="container mt-4">
-        <div className="row">
-            <div className="col-6 offset-3">
-                <div className="card">
-                    <h5 className="card-header">User Register</h5>
-                    <div className="card-body">
-                        <form>
-                            
-                            <div className="mb-3">
-                                <label for="exampleInputName1" className="form-label">Full Name</label>
-                                <input type="text" className="form-control"/>
-                            </div>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style={{'border-radius':'3rem'}}>
+                    <div class="card-body p-5 text-center">
 
-                            <div className="mb-3">
-                                <label for="exampleInputEmail1" className="form-label">Email</label>
-                                <input type="email" className="form-control"/>
-                            </div>
+                        <h3 class="mb-5">Student Registration</h3>
 
-                            <div className="mb-3">
-                                <label for="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1"/>
-                            </div>
-                            
-                            <div className="mb-3">
-                                <label for="exampleInputPhone1" className="form-label">Phone Number</label>
-                                <input type="number" className="form-control"/>
-                            </div>
-                            
+                        <div class="form-outline mb-4">
+                        <input type="text" id="name1" placeholder="Full Name" class="form-control form-control-lg" />
+                        </div>
 
-                            <div className="mb-3">
-                                <label for="exampleInputInstituteName1" className="form-label">Institute Name</label>
-                                <input type="text" className="form-control"/>
-                            </div>
-                            
-                            <button type="submit" className="btn btn-primary">Register</button>
+                        <div class="form-outline mb-4">
+                        <input type="email" id="typeEmailX-2" placeholder="Email" class="form-control form-control-lg" />
+                        </div>
 
-                        </form>
+                        <div class="form-outline mb-4">
+                        <input type="password" id="typePasswordX-2" placeholder="Password" class="form-control form-control-lg" />
+                        </div>
+                        
+                        <div class="form-outline mb-4">
+                        <input type="number" id="phone1" placeholder="Phone Number" class="form-control form-control-lg" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" id="institute" placeholder="Institute Name" class="form-control form-control-lg" />
+                        </div>
+
+                        <button class="btn btn-dark btn-lg btn-block w-100" type="submit">Register</button>
+                        <hr class="my-4"/>
+
+
+                        <p>For Teacher Registration <Link to="/teacher-register">Click Here</Link></p>
                     </div>
-
+                    </div>
                 </div>
             </div>
         </div>
-       </div>
+   </div>
     );
 }
 

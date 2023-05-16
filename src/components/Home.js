@@ -3,9 +3,8 @@ import AllCourses from "./AllCourses";
 
 function Home() {
   return (
-    <div className="container mt-4">
+    <div className="">
 
-     
       <div id="carouselExampleIndicators" className="carousel slide" style={{maxHeight:"500px"}}>
           <div className="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -38,11 +37,10 @@ function Home() {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-
       {/* Latest Courses*/}
 
       
-      <div className="row mt-5">
+      <div className="row mx-2 mt-5">
         <h3>Latest Courses</h3>
         <div className="row row-cols-1 row-cols-md-4 my-1 g-4">
                 <div className="col">
@@ -100,7 +98,7 @@ function Home() {
       {/* Popular Courses*/}
 
       
-      <div className="row mt-5">
+      <div className="row mx-2 mt-5">
       <h3>Popular Courses</h3>
       <div className="row row-cols-1 row-cols-md-4 my-2 g-4">
                 <div className="col">
@@ -157,7 +155,7 @@ function Home() {
 
     {/* Popular Teachers*/}  
        
-      <div className="row mt-5">
+      <div className="row mx-2 mt-5">
       <h3>Popular Teachers</h3>
       <div className="row row-cols-1 row-cols-md-4 my-2 g-4">
                 <div className="col">
@@ -215,9 +213,9 @@ function Home() {
 
       {/* Start Student Testimonials*/}
       
-      <h3 className="pb-1 mb-4 mt-5">Student Testimonials</h3>
+      <h3 className="pb-1 mb-4 mx-3 mt-5">Student Testimonials</h3>
       
-        <div id="carouselExampleIndicators" class="carousel slide bg-dark text-white py-5">
+        <div id="carouselExampleIndicators" class="carousel slide bg-dark text-white mx-3 py-5">
           <div className="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>

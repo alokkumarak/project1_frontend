@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <footer class="text-center pt-5 mt-5 mx-5 text-lg-start bg-dark text-white">
+      <footer class="text-center pt-5 mt-5 mx-3 text-lg-start bg-dark text-white">
     
     
       <section class="">

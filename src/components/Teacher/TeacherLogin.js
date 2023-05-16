@@ -2,33 +2,30 @@ import { Link } from "react-router-dom";
 
 function TeacherLogin(){
     return(
-       <div className="container mt-4">
-        <div className="row">
-            <div className="col-6 offset-3">
-                <div className="card">
-                    <h5 className="card-header">Teacher Login</h5>
-                    <div className="card-body">
-                        <form>
-                            <div className="mb-3">
-                                <label for="exampleInputEmail1" className="form-label">Username</label>
-                                <input type="email" className="form-control"/>
-                            </div>
+        <div className="container mt-4">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style={{'border-radius':'3rem'}}>
+                    <div class="card-body p-5 text-center">
 
-                            <div className="mb-3">
-                                <label for="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1"/>
-                            </div>
+                        <h3 class="mb-5">Teacher Log in</h3>
+                        <div class="form-outline mb-4">
+                        <input type="email" id="typeEmailX-2" placeholder="Email" class="form-control form-control-lg" />
+                        </div>
+                        <div class="form-outline mb-4">
+                        <input type="password" id="typePasswordX-2" placeholder="Password" class="form-control form-control-lg" />
+                        </div>
 
-                            
-                            <button type="submit" className="btn btn-primary">Log In </button>
-
-                        </form>
+                        <button class="btn btn-dark btn-lg btn-block w-100" type="submit">Login</button>
+                        <hr class="my-4"/>
+                        <p>For Student Login <Link to="/user-login">Click Here</Link></p>
                     </div>
-
+                    </div>
                 </div>
             </div>
         </div>
-       </div>
+   </div>
     );
 }
 
