@@ -35,7 +35,7 @@ function AddCourses(){
                                 <textarea className="form-control" id="description"/>
                             </div>
 
-                            <Link to="/add-videos"><button type="submit" className="btn btn-primary">Add Course </button></Link>
+                            <Link to="/add-videos"><button type="submit" className="btn btn-primary">Proceed</button></Link>
 
                         </form>
                     </div>
