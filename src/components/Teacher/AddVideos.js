@@ -56,7 +56,7 @@ function AddVideos(){
 
                                         <Form.Item>
                                             <Button 
-                                            className="btn btn-outline-primary btn-lg w-50 h-100" 
+                                            className="btn btn-light btn-outline-primary btn-lg w-50 h-100" 
                                                 block
                                                 onClick={()=>{
                                                     add();

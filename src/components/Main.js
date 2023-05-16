@@ -1,5 +1,6 @@
 import Header from './Header' ;
 import Home from './Home';
+import CardCarousel from './CardCarousel';
 import CourseDetail from "./CourseDetail";
 import Login from './User/Login';
 import Register from './User/Register';
@@ -27,6 +28,7 @@ function Main() {
       <div>
         <Header />
         <Switch>
+          <Route path="/card-carousel" element={<CardCarousel/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="/detail/:course_id" element={<CourseDetail />}/>
           <Route path="/user-login" element={<Login/>}/>
