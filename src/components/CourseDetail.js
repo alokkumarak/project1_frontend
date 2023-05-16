@@ -206,7 +206,7 @@ function CourseDetail() {
             <img
               src="/logo512.png"
               className="img-thumbnail"
-              alt="Course Image"
+              alt="Course thumbnail"
             />
           </div>
 

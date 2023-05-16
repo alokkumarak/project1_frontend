@@ -82,18 +82,12 @@ const Controls = forwardRef(
     },
     ref
   ) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+    // const [anchorEl, setAnchorEl] = useState(null);
     const [fullScr, setFullScr] = useState(true);
 
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
+   
 
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
+    // const open = Boolean(anchorEl);
     // const id = open ? "simple-popover" : undefined;
 
     return (

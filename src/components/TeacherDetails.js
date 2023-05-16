@@ -4,7 +4,7 @@ function TeacherDetail(){
       <div className="container mt-3">
         <div className="row">
             <div className="col-4">
-                <img src ="/logo512.png" className="img-thumbnail" alt="Course Image"/>
+                <img src ="/logo512.png" className="img-thumbnail" alt="Course thumb"/>
             </div>
 
             <div className="col-8">
