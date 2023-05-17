@@ -37,13 +37,15 @@ const Routing = () => {
 
   useEffect(() => {
     const studentToken = JSON.parse(localStorage.getItem("student"));
+    const teacherToken =JSON.parse(localStorage.getItem("teacher"))
 
-    if (studentToken) {
-      dispatch({ type: "STUDENT", payload: studentToken });
-      navigate("/");
-    } else {
-      navigate("/user-login");
-    }
+    // if (studentToken || teacherToken) {
+    //   dispatch({ type: "STUDENT", payload: studentToken });
+    //   dispatch({ type:"TEACHER", payload:teacherToken});
+    //   navigate("/");
+    // } else {
+    //   navigate("/user-login");
+    // }
   }, []);
 
   return (

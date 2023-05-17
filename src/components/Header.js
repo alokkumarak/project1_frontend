@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 function Header({ teacherToken, studentToken }) {
-    console.log(teacherToken, "teacherToken");
-    console.log(studentToken, "studentToken");
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
@@ -26,7 +24,7 @@ function Header({ teacherToken, studentToken }) {
                 Courses
               </Link>
             </li>
-            {!teacherToken || !studentToken && (
+            {(!teacherToken && !studentToken) && (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/user-login">
