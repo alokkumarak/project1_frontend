@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import Multiselect from 'multiselect-react-dropdown';
 import TeacherSidebar from "./TeacherSidebar";
+import { useState } from "react";
 
 function AddCourses(){
+   const [category,setCategory]=useState(["GATE","CSE","Interview","Sem. Exams"]);
+
     return(
         <div className="container mt-4">
         <div className="row">
@@ -9,7 +13,7 @@ function AddCourses(){
                 <TeacherSidebar/>
             </aside>
             <div className="col-6">
-                <div className="card">
+                <div className="card shadow-lg bg-white rounded">
                     <h5 className="card-header">Add Course</h5>
                     <div className="card-body">
                         <form>
@@ -30,13 +34,29 @@ function AddCourses(){
                             </div>
 
 
-                            <div className="mb-3">
-                                <label for="exampleInputPassword1" className="form-label">Technologies</label>
-                                <textarea className="form-control" id="description"/>
+                            <div className="mt-4">
+
+                            <label for="category" className="form-label">Course Category</label>
+                                <Multiselect
+                                  isObject={false}
+                                  onRemove={(event) => {
+                                    console.log(event);
+                                  }}
+
+                                  onSelect={(event) => {
+                                    console.log(event);
+                                  }}
+
+                                  options={category}
+
+                                  showCheckbox
+                                   
+                                />
+                
                             </div>
-
-                            <Link to="/add-videos"><button type="submit" className="btn btn-primary">Proceed</button></Link>
-
+                            <div className="text-center">
+                            <Link to="/add-videos"><button type="submit" className="mt-4 w-50 btn btn-dark">Proceed</button></Link>
+                            </div>
                         </form>
                     </div>
 

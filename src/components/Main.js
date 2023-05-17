@@ -6,6 +6,7 @@ import Login from "./User/Login";
 import Register from "./User/Register";
 import Dashboard from "./User/Dashboard";
 import Mycourses from "./User/MyCourses";
+import TeacherProfile from './Teacher/TeacherProfile';
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherRegister from "./Teacher/TeacherRegister";
 import TeacherDashboard from "./Teacher/TeacherDashboard";
@@ -25,6 +26,7 @@ import {
 } from "react-router-dom";
 import React, { useContext, useReducer, createContext, useEffect } from "react";
 import { reducer, initialState } from "../context/reducer";
+import StudentProfile from './User/StudentProfile';
 
 export const UserContext = createContext();
 export const studentToken = JSON.parse(localStorage.getItem("student"));
@@ -52,11 +54,13 @@ const Routing = () => {
       <Switch>
         <Route path="/" element={<Home />} />
         <Route path="/all-courses" element={<AllCourses />} />
-        {studentToken || teacherToken ? (
-          <>
+        {/* {studentToken || teacherToken ? (
+          <> */}
             <Route path="/user-dashboard" element={<Dashboard />} />
+            <Route path="/student-profile" element={<StudentProfile />} />
             <Route path="/my-courses" element={<Mycourses />} />
             <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+            <Route path="/teacher-profile" element={<TeacherProfile/>} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/my-users" element={<MyUsers />} />
             <Route path="/add-courses" element={<AddCourses />} />
@@ -66,15 +70,15 @@ const Routing = () => {
               element={<TeacherDetail />}
             />
             <Route path="/course-detail/:course_id" element={<CourseDetail />} />
-          </>
+          {/* </>
         ) : (
-          <>
+          <> */}
             <Route path="/user-login" element={<Login />} />
             <Route path="/user-register" element={<Register />} />
             <Route path="/teacher-login" element={<TeacherLogin />} />
             <Route path="/teacher-register" element={<TeacherRegister />} />
-          </>
-        )}
+          {/* </>
+        )} */}
       </Switch>
       <Footer />
     </div>

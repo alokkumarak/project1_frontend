@@ -26,7 +26,7 @@ function Header({ teacherToken, studentToken }) {
                 Courses
               </Link>
             </li>
-            {!teacherToken || !studentToken && (
+            {/* {!teacherToken || !studentToken && ( */}
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/user-login">
@@ -39,37 +39,37 @@ function Header({ teacherToken, studentToken }) {
                   </Link>
                 </li>
               </>
-            ) } 
+             {/* )}  */}
 
-               { teacherToken &&
-              <>
+               {/* { teacherToken &&
+              <> */}
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     class="nav-link dropdown-toggle"
-                    href="#"
+                    to="#"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     Teacher
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <Link className="dropdown-item" to="/teacher-Dashboard">
                       Dashboard
                     </Link>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Log Out
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
-               </>
-               }
-                { studentToken &&
-                <>
+               {/* </>
+               } */}
+                {/* { studentToken &&
+                <> */}
                 <li className="nav-item dropdown">
-                  <a
+                  <Link
                     class="nav-link dropdown-toggle"
                     href="#"
                     role="button"
@@ -77,7 +77,7 @@ function Header({ teacherToken, studentToken }) {
                     aria-expanded="false"
                   >
                     Student
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     {/* <Link className="dropdown-item" to="/user-login">Log In</Link>
                             <Link className="dropdown-item" to="/user-register">Register</Link> */}
@@ -85,14 +85,14 @@ function Header({ teacherToken, studentToken }) {
                       Dashboard
                     </Link>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         Log Out
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
-              </>
-            }
+              {/* </>
+            } */}
           </ul>
         </div>
       </div>

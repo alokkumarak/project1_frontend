@@ -11,7 +11,7 @@ function MyUsers(){
                         </aside>
                         
                         <section className="col-md-9">
-                            <div className="card">
+                            <div className="card shadow-lg bg-white rounded">
                                 <h5 className="card-header">My Students</h5>
                                 <div className="card-body">
                                     <table className="table table-bordered">

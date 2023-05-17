@@ -56,7 +56,7 @@ function AddVideos(){
 
                                         <Form.Item>
                                             <Button 
-                                            className="btn btn-light btn-outline-primary btn-lg w-50 h-100" 
+                                            className="btn btn-outline-primary btn-lg w-50 h-100" 
                                                 block
                                                 onClick={()=>{
                                                     add();
@@ -73,7 +73,7 @@ function AddVideos(){
                             </Form.List>
 
                             <Button className="btn btn-primary w-25 h-100" htmlType="submit" type="primary">
-                            Submit
+                            Upload
                             </Button>
                        </Form>
                     </div>
