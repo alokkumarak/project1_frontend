@@ -8,6 +8,9 @@ export const reducer = (state, action) => {
   if (action.type === "TEACHER") {
     return action.payload;
   }
+  if (action.type === "COURSE_THUMB") {
+    return action.payload;
+  }
   if (action.type === "CLEAR") {
     return null;
     }

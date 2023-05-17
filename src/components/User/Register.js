@@ -42,13 +42,14 @@ function Register(){
             }
           
         ).then((response) => {
-            console.log(response);
+            if(response){
             navigate("/user-login");
             setEmail("");
             setName("");
             setPassword("");
             setPhone("");
             setInstitute("");
+            }
 
         })
         .catch((err) => {

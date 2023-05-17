@@ -30,14 +30,16 @@ function Login() {
     }
     )
       .then((response) => {
-        console.log(response);
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("student", JSON.stringify(response.data.user));
-        dispatch({ type: "STUDENT", payload: response.data.user });
-        // navigate("/");
-        setEmail("");
-        setPassword("");
-        window.location.reload();
+        if(response){
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("student", JSON.stringify(response.data.user));
+          dispatch({ type: "STUDENT", payload: response.data.user });
+          // navigate("/");
+          setEmail("");
+          setPassword("");
+          window.location.reload();
+        }
+       
       })
       .catch((err) => {
         console.log(err);
