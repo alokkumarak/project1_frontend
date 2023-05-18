@@ -1,4 +1,5 @@
 import Card from "../Card";
+import Sidebar from "../User/Sidebar";
 import TeacherSidebar from "./TeacherSidebar";
 
 
@@ -7,7 +8,7 @@ function MyCourses(){
                 <div className="container mt-4">
                     <div className="row">
                         <aside className="col-md-3">
-                            <TeacherSidebar/>
+                           <Sidebar/>
                         </aside>
                         
                         <section className="col-md-9">

@@ -52,7 +52,7 @@ function Header({ teacherToken, studentToken }) {
                     Teacher
                   </Link>
                   <ul className="dropdown-menu">
-                    <Link className="dropdown-item" to="/teacher-Dashboard">
+                    <Link className="dropdown-item" to="/teacher-profile">
                       Dashboard
                     </Link>
                     <li>
