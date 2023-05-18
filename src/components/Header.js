@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 function Header({ teacherToken, studentToken }) {
-    console.log(teacherToken, "teacherToken");
-    console.log(studentToken, "studentToken");
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
@@ -26,7 +24,7 @@ function Header({ teacherToken, studentToken }) {
                 Courses
               </Link>
             </li>
-            {/* {!teacherToken || !studentToken && ( */}
+           {(!teacherToken && !studentToken) && ( 
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/user-login">
@@ -39,10 +37,10 @@ function Header({ teacherToken, studentToken }) {
                   </Link>
                 </li>
               </>
-             {/* )}  */}
+              )} 
 
-               {/* { teacherToken &&
-              <> */}
+                { teacherToken &&
+              <> 
                 <li className="nav-item dropdown">
                   <Link
                     class="nav-link dropdown-toggle"
@@ -64,10 +62,10 @@ function Header({ teacherToken, studentToken }) {
                     </li>
                   </ul>
                 </li>
-               {/* </>
-               } */}
-                {/* { studentToken &&
-                <> */}
+                </>
+               } 
+                 { studentToken &&
+                <> 
                 <li className="nav-item dropdown">
                   <Link
                     class="nav-link dropdown-toggle"
@@ -91,8 +89,8 @@ function Header({ teacherToken, studentToken }) {
                     </li>
                   </ul>
                 </li>
-              {/* </>
-            } */}
+               </>
+            } 
           </ul>
         </div>
       </div>

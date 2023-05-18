@@ -34,7 +34,6 @@ function TeacherLogin() {
     }
     )
       .then((response) => {
-        console.log(response);
         localStorage.setItem("teacher", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
         dispatch({ type: "TEACHER", payload: response.data.user });

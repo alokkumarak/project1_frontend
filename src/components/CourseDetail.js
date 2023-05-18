@@ -105,7 +105,7 @@ function CourseDetail() {
   };
 
   const handleMouseMove = () => {
-    console.log("mousemove");
+   
     controlsRef.current.style.visibility = "visible";
     count = 0;
   };
@@ -129,7 +129,7 @@ function CourseDetail() {
   };
 
   const handleSeekChange = (e, newValue) => {
-    console.log({ newValue });
+    
     setState({ ...state, played: parseFloat(newValue / 100) });
   };
 
@@ -138,7 +138,7 @@ function CourseDetail() {
   };
 
   const handleSeekMouseUp = (e, newValue) => {
-    console.log({ value: e.target });
+   
     setState({ ...state, seeking: false });
     playerRef.current.seekTo(newValue / 100, "fraction");
   };

@@ -43,13 +43,15 @@ function TeacherRegister() {
     }
     )
       .then((response) => {
-        console.log(response);
-        navigate("/teacher-login");
-        setEmail("");
-        setName("");
-        setPassword("");
-        setPhone("");
-        setInstitute("");
+        if(response){
+          navigate("/teacher-login");
+          setEmail("");
+          setName("");
+          setPassword("");
+          setPhone("");
+          setInstitute("");
+        }
+       
       })
       .catch((err) => {
         console.log(err);

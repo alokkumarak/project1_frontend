@@ -39,13 +39,15 @@ const Routing = () => {
 
   useEffect(() => {
     const studentToken = JSON.parse(localStorage.getItem("student"));
+    const teacherToken =JSON.parse(localStorage.getItem("teacher"))
 
-    if (studentToken) {
-      dispatch({ type: "STUDENT", payload: studentToken });
-      navigate("/");
-    } else {
-      navigate("/user-login");
-    }
+    // if (studentToken || teacherToken) {
+    //   dispatch({ type: "STUDENT", payload: studentToken });
+    //   dispatch({ type:"TEACHER", payload:teacherToken});
+    //   navigate("/");
+    // } else {
+    //   navigate("/user-login");
+    // }
   }, []);
 
   return (
@@ -54,8 +56,8 @@ const Routing = () => {
       <Switch>
         <Route path="/" element={<Home />} />
         <Route path="/all-courses" element={<AllCourses />} />
-        {/* {studentToken || teacherToken ? (
-          <> */}
+         {studentToken || teacherToken ? (
+          <> 
             <Route path="/user-dashboard" element={<Dashboard />} />
             <Route path="/student-profile" element={<StudentProfile />} />
             <Route path="/my-courses" element={<Mycourses />} />
@@ -70,15 +72,15 @@ const Routing = () => {
               element={<TeacherDetail />}
             />
             <Route path="/course-detail/:course_id" element={<CourseDetail />} />
-          {/* </>
+           </>
         ) : (
-          <> */}
+          <> 
             <Route path="/user-login" element={<Login />} />
             <Route path="/user-register" element={<Register />} />
             <Route path="/teacher-login" element={<TeacherLogin />} />
             <Route path="/teacher-register" element={<TeacherRegister />} />
-          {/* </>
-        )} */}
+           </>
+        )} 
       </Switch>
       <Footer />
     </div>
