@@ -1,16 +1,20 @@
+import Link from "antd/es/typography/Link";
+import HomeIcon from '@mui/icons-material/Home';
+import EmailIcon from '@mui/icons-material/Email';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 function Footer() {
     return (
-      <footer class="text-center pt-5 mt-5 mx-3 text-lg-start bg-dark text-white">
+      <footer className="text-center pt-5 mt-5 mx-3 text-lg-start bg-dark text-white">
     
     
-      <section class="">
-        <div class="container text-center text-md-start mt-5">
+      <section className="">
+        <div className="container text-center text-md-start mt-5">
           
-          <div class="row mt-3">
+          <div className="row mt-3">
             
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               
-              <h6 class="text-uppercase fw-bold mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
                 EDUPEDIA
               </h6>
               <p>
@@ -18,53 +22,50 @@ function Footer() {
               </p>
             </div>
             
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
              
-              <h6 class="text-uppercase fw-bold mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
                 COURSES
               </h6>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">DSA</a>
+                <Link to="#!" className="text-reset text-decoration-none">CSE</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">FLAT</a>
+              <Link to="#!" className="text-reset text-decoration-none">GATE</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">Compiler Design</a>
+              <Link to="#!" className="text-reset text-decoration-none">Sem Exams</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">Machine Learning</a>
+              <Link to="#!" className="text-reset text-decoration-none">Interview Preparation</Link>
               </p>
             </div>
             
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               
-              <h6 class="text-uppercase fw-bold mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
                 USEFUL LINKS
               </h6>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">About Us</a>
+              <Link to="#!" className="text-reset text-decoration-none">About US</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">Book Demo</a>
+              <Link to="#!" className="text-reset text-decoration-none">Courses</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">Courses</a>
+              <Link to="#!" className="text-reset text-decoration-none">Register</Link>
               </p>
               <p>
-                <a href="#!" class="text-reset text-decoration-none">Any Query</a>
+              <Link to="#!" className="text-reset text-decoration-none">Any Query</Link>
               </p>
             </div>
             
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               
-              <h6 class="text-uppercase fw-bold mb-4">CONTACT US</h6>
-              <p><i class="fa-regular fa-home me-3 text-secondary"></i>Patna,Bihar</p>
-              <p>
-                <i class="fa-regular fa-envelope me-3 text-secondary"></i>
-                info@edupedia.com
-              </p>
-              <p><i class="fa-regular fa-phone me-3 text-secondary"></i>02046036583</p>
+              <h6 className="text-uppercase fw-bold mb-4">CONTACT US</h6>
+              <p><span><HomeIcon/> Patna,Bihar</span></p>
+              <p><span><EmailIcon/> info@edupedia.com</span></p>
+              <p><span><LocalPhoneIcon/> +91 7004278778</span></p>
             </div>
             
           </div>
@@ -72,9 +73,9 @@ function Footer() {
         </div>
       </section>
       
-      <div class="text-center p-4">
+      <div className="text-center p-4">
         © 2023 Copyright:
-        <a class="text-reset text-decoration-none fw-bold" href="#">edupedia.com</a>
+        <Link className="text-reset text-decoration-none fw-bold" to="#">edupedia.com</Link>
       </div>
       
     </footer>

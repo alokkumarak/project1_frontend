@@ -96,7 +96,7 @@ function AddVideos() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{'min-height':'calc(60vh - 100px)'}}>
       <div className="row">
         <aside className="col-md-3">
           <TeacherSidebar />
