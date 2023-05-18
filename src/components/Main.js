@@ -60,9 +60,9 @@ const Routing = () => {
           <> 
             <Route path="/user-dashboard" element={<Dashboard />} />
             <Route path="/student-profile" element={<StudentProfile />} />
-            <Route path="/my-courses" element={<Mycourses />} />
-            <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
-            <Route path="/teacher-profile" element={<TeacherProfile/>} />
+            <Route path="/my-courses" element={<Mycourses teacherToken={teacherToken} />} />
+            {/* <Route path="/teacher-dashboard" element={<TeacherDashboard />} /> */}
+            <Route path="/teacher-profile" element={<TeacherProfile teacherToken={teacherToken}/>} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/my-users" element={<MyUsers />} />
             <Route path="/add-courses" element={<AddCourses />} />
