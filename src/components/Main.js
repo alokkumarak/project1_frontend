@@ -41,13 +41,13 @@ const Routing = () => {
     const studentToken = JSON.parse(localStorage.getItem("student"));
     const teacherToken =JSON.parse(localStorage.getItem("teacher"))
 
-    // if (studentToken || teacherToken) {
-    //   dispatch({ type: "STUDENT", payload: studentToken });
-    //   dispatch({ type:"TEACHER", payload:teacherToken});
-    //   navigate("/");
-    // } else {
-    //   navigate("/user-login");
-    // }
+    if (studentToken || teacherToken) {
+      dispatch({ type: "STUDENT", payload: studentToken });
+      dispatch({ type:"TEACHER", payload:teacherToken});
+      navigate("/");
+    } else {
+      navigate("/");
+    }
   }, []);
 
   return (
@@ -58,12 +58,12 @@ const Routing = () => {
         <Route path="/all-courses" element={<AllCourses />} />
          {studentToken || teacherToken ? (
           <> 
-            <Route path="/user-dashboard" element={<Dashboard />} />
-            <Route path="/student-profile" element={<StudentProfile />} />
+            {/* <Route path="/user-dashboard" element={<Dashboard />} /> */}
+            <Route path="/student-profile" element={<StudentProfile studentToken={studentToken} />} />
             <Route path="/my-courses" element={<Mycourses teacherToken={teacherToken} />} />
             {/* <Route path="/teacher-dashboard" element={<TeacherDashboard />} /> */}
             <Route path="/teacher-profile" element={<TeacherProfile teacherToken={teacherToken}/>} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/courses" element={<Courses studentToken={studentToken}/>} />
             <Route path="/my-users" element={<MyUsers />} />
             <Route path="/add-courses" element={<AddCourses />} />
             <Route path="/add-videos" element={<AddVideos />} />
