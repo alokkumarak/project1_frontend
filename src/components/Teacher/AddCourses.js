@@ -49,6 +49,7 @@ function AddCourses() {
           course_thumbnail: courseUrl,
           course_type: courseType,
           course_teacher_id: teacherToken?.teacher_id,
+          course_teacher_name: teacherToken?.teacher_name,
         },
         {
           headers: {

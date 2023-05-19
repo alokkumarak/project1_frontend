@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
@@ -10,6 +10,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Controls from "./Controls";
 import ReactPlayer from "react-player";
 import screenful from "screenfull";
+import Axios from "axios";
+import { serverString } from "../utils/config";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   // height: '80%',
@@ -66,6 +68,8 @@ let count = 0;
 function CourseDetail() {
   let { course_id } = useParams();
   const [openModel, setOpenModel] = useState(false);
+  const [oneCourseValues, setOneCourseValues] = useState();
+  const [courseVideos, setCourseVideos] = useState([]);
   const controlsRef = useRef(null);
   const playerContainerRef = useRef(null);
   const playerRef = useRef(null);
@@ -105,7 +109,6 @@ function CourseDetail() {
   };
 
   const handleMouseMove = () => {
-   
     controlsRef.current.style.visibility = "visible";
     count = 0;
   };
@@ -129,7 +132,6 @@ function CourseDetail() {
   };
 
   const handleSeekChange = (e, newValue) => {
-    
     setState({ ...state, played: parseFloat(newValue / 100) });
   };
 
@@ -138,7 +140,6 @@ function CourseDetail() {
   };
 
   const handleSeekMouseUp = (e, newValue) => {
-   
     setState({ ...state, seeking: false });
     playerRef.current.seekTo(newValue / 100, "fraction");
   };
@@ -195,93 +196,186 @@ function CourseDetail() {
   };
 
   const toggleFullScreen = () => {
-      screenful?.toggle(playerContainerRef?.current);
+    screenful?.toggle(playerContainerRef?.current);
   };
+
+  useEffect(() => {
+    Axios.get(`${serverString}/getOneCourseDetail?course_id=${course_id}`)
+      .then((res) => {
+        if (res.data) {
+          setOneCourseValues(res.data.data);
+          Axios.get(`${serverString}/getOneCourseVideos?course_id=${course_id}`)
+            .then((response) => {
+              if (response.data) {
+                setCourseVideos(response.data.data);
+              }
+            })
+            .catch((error) => {
+              console.log("error in fetching videos", error);
+            });
+        }
+      })
+      .catch((err) => {
+        console.log("error while fetching one course", err);
+      });
+  }, []);
 
   return (
     <Fragment>
       <div className="container mt-3">
-        <div className="row">
-          <div className="col-4">
-            <img
-              src="/logo512.png"
-              className="img-thumbnail"
-              alt="Course thumbnail"
-            />
-          </div>
+        {oneCourseValues ? (
+          <div className="row">
+            <div className="col-4">
+              <img
+                src={
+                  oneCourseValues.course_thumbnail
+                    ? oneCourseValues.course_thumbnail
+                    : "/logo512.png"
+                }
+                className="img-thumbnail"
+                alt="Course thumbnail"
+              />
+            </div>
 
-          <div className="col-8">
-            <h3> Course Title </h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
-            </p>
+            <div className="col-8">
+              <h3> {oneCourseValues?.course_title} </h3>
+              <p>{oneCourseValues?.course_description}</p>
 
-            <p className="fw-bold">
-              Course By:<Link to="/teacher-detail/1">Teacher</Link>
-            </p>
-            <p className="fw-bold">Duration: 3 Hours 45 Minutes</p>
-            <p className="fw-bold">Total Enrolled: 456 Students</p>
-            <p className="fw-bold">Rating: 4.5/5</p>
+              <p className="fw-bold">
+                Course By: &nbsp;
+                <Link
+                  to={`/teacher-detail/${oneCourseValues.course_teacher_id}`}
+                >
+                  {oneCourseValues.course_teacher_name
+                    ? oneCourseValues.course_teacher_name
+                    : "Teacher Name"}
+                </Link>
+              </p>
+              <p className="fw-bold">
+                Duration:{" "}
+                {oneCourseValues.course_duration
+                  ? oneCourseValues.course_duration
+                  : "Not mentioned"}
+              </p>
+              <p className="fw-bold">
+                Total Enrolled:{" "}
+                {oneCourseValues.course_student_inrolled
+                  ? oneCourseValues.course_student_inrolled.length
+                  : "0"}
+              </p>
+              {/* <p className="fw-bold">Rating: 4.5/5</p> */}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div> loading........</div>
+        )}
 
         {/*Course Videos*/}
 
         <div className="card mt-4">
           <h5 className="card-header">Course Videos</h5>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              Introduction
-              <button
-                className="btn btn-sm btn-secondary float-end"
-                //   data-bs-toggle="modal"
-                //   data-bs-target="#exampleModal"
-                onClick={() => {
-                  openModelHandle();
-                }}
-              >
-                Play
-              </button>
-            </li>
-            <li className="list-group-item">
-              Set up Project
-              <button className="btn btn-sm btn-secondary float-end">
-                Play
-              </button>
-            </li>
-            <li className="list-group-item">
-              Start with functional components
-              <button className="btn btn-sm btn-secondary float-end">
-                Play
-              </button>
-            </li>
-            <li className="list-group-item">
-              Introduction
-              <button className="btn btn-sm btn-secondary float-end">
-                Play
-              </button>
-            </li>
-            <li className="list-group-item">
-              Set up Project
-              <button className="btn btn-sm btn-secondary float-end">
-                Play
-              </button>
-            </li>
-            <li className="list-group-item">
-              Start with functional components
-              <button className="btn btn-sm btn-secondary float-end">
-                Play
-              </button>
-            </li>
+            {
+              courseVideos.length ? courseVideos?.map((video,index)=>(
+                <li className="list-group-item" key={index}>
+                 {video.video_title} 
+                <button
+                  className="btn btn-sm btn-secondary float-end"
+                  onClick={() => {
+                    openModelHandle();
+                  }}
+                >
+                  Play
+                </button>
+                <BootstrapDialog
+                  //  fullWidth={true}
+                  maxWidth="lg"
+                  // fullScreen={true}
+                  // onClose={closeModelHandle}
+                  aria-labelledby="customized-dialog-title"
+                  open={openModel}
+                  fullScreen={true}
+                >
+                  <BootstrapDialogTitle
+                    id="customized-dialog-title"
+                    onClose={closeModelHandle}
+                  >
+                    {video.video_title}
+                  </BootstrapDialogTitle>
+                  <DialogContent
+                    dividers
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div style={{ height: "850px", minWidth: "1400px" }}>
+                      <div
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={hanldeMouseLeave}
+                        ref={playerContainerRef}
+                        className="playerWrapper"
+                      >
+                        <ReactPlayer
+                          ref={playerRef}
+                          width="100%"
+                          height="100%"
+                          // url="https://youtu.be/Dli3czfNvlo"  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                          url={video.video_file}
+                          pip={pip}
+                          playing={playing}
+                          controls={false}
+                          light={light}
+                          loop={loop}
+                          // playbackRate={playbackRate}
+                          volume={volume}
+                          muted={muted}
+                          onProgress={handleProgress}
+                          config={{
+                            file: {
+                              attributes: {
+                                crossorigin: "anonymous",
+                              },
+                            },
+                          }}
+                        />
+  
+                        <Controls
+                          ref={controlsRef}
+                          onSeek={handleSeekChange}
+                          onSeekMouseDown={handleSeekMouseDown}
+                          onSeekMouseUp={handleSeekMouseUp}
+                          onDuration={handleDuration}
+                          onRewind={handleRewind}
+                          onPlayPause={handlePlayPause}
+                          onFastForward={handleFastForward}
+                          playing={playing}
+                          played={played}
+                          elapsedTime={elapsedTime}
+                          totalDuration={totalDuration}
+                          onMute={hanldeMute}
+                          muted={muted}
+                          onVolumeChange={handleVolumeChange}
+                          onVolumeSeekDown={handleVolumeSeekDown}
+                          onChangeDispayFormat={handleDisplayFormat}
+                          // playbackRate={playbackRate}
+                          // onPlaybackRateChange={handlePlaybackRate}
+                          onToggleFullScreen={toggleFullScreen}
+                          volume={volume}
+                        />
+                      </div>
+                    </div>
+                  </DialogContent>
+                </BootstrapDialog>
+              </li>
+              )): <div>videos loading.........</div>
+            }
+           
           </ul>
         </div>
 
-        <h3 className="pb-1 mb-4 mt-5">Related Courses</h3>
+        {/* <h3 className="pb-1 mb-4 mt-5">Related Courses</h3>
         <div className="row mb-4">
           <div className="col-md-3">
             <div className="card">
@@ -308,90 +402,8 @@ function CourseDetail() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-
-      <BootstrapDialog
-        //  fullWidth={true}
-        maxWidth="lg"
-        // fullScreen={true}
-        // onClose={closeModelHandle}
-        aria-labelledby="customized-dialog-title"
-        open={openModel}
-        fullScreen={true}
-      >
-        <BootstrapDialogTitle
-          id="customized-dialog-title"
-          onClose={closeModelHandle}
-        >
-          Modal title
-        </BootstrapDialogTitle>
-        <DialogContent
-          dividers
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ height: "850px", minWidth: "1400px" }}>
-            <div
-              onMouseMove={handleMouseMove}
-              onMouseLeave={hanldeMouseLeave}
-              ref={playerContainerRef}
-              className="playerWrapper"
-            >
-              <ReactPlayer
-                ref={playerRef}
-                width="100%"
-                height="100%"
-                // url="https://youtu.be/Dli3czfNvlo"
-                url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-                pip={pip}
-                playing={playing}
-                controls={false}
-                light={light}
-                loop={loop}
-                // playbackRate={playbackRate}
-                volume={volume}
-                muted={muted}
-                onProgress={handleProgress}
-                config={{
-                  file: {
-                    attributes: {
-                      crossorigin: "anonymous",
-                    },
-                  },
-                }}
-              />
-
-              <Controls
-                ref={controlsRef}
-                onSeek={handleSeekChange}
-                onSeekMouseDown={handleSeekMouseDown}
-                onSeekMouseUp={handleSeekMouseUp}
-                onDuration={handleDuration}
-                onRewind={handleRewind}
-                onPlayPause={handlePlayPause}
-                onFastForward={handleFastForward}
-                playing={playing}
-                played={played}
-                elapsedTime={elapsedTime}
-                totalDuration={totalDuration}
-                onMute={hanldeMute}
-                muted={muted}
-                onVolumeChange={handleVolumeChange}
-                onVolumeSeekDown={handleVolumeSeekDown}
-                onChangeDispayFormat={handleDisplayFormat}
-                // playbackRate={playbackRate}
-                // onPlaybackRateChange={handlePlaybackRate}
-                onToggleFullScreen={toggleFullScreen}
-                volume={volume}
-              />
-            </div>
-          </div>
-        </DialogContent>
-      </BootstrapDialog>
     </Fragment>
   );
 }

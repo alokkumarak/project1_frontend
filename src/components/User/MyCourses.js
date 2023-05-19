@@ -9,7 +9,6 @@ function MyCourses({ teacherToken }) {
   const [teacherCourse, setTeacherCourse] = useState([]);
 
   useEffect(() => {
-    console.log("comming here....");
     if (teacherToken.teacher_id) {
       Axios.get(
         `${serverString}/getCourseByTeacherId?teacher_id=${teacherToken.teacher_id}`

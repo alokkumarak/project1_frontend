@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../Main";
 
 function TeacherSidebar(){
+    const navigate =useNavigate()
+    const { state, dispatch } = useContext(UserContext);
+  
+    const handleLogout = () => {
+      localStorage.clear();
+      dispatch({ Type: 'CLEAR' })
+      navigate("/");
+      window.location.reload()
+  }
     return(
         <div className="card shadow-lg bg-white rounded">
                     <h5 className="card-header">Dashboard</h5>
@@ -9,7 +20,7 @@ function TeacherSidebar(){
                         <Link to="/my-courses" className="list-group-item list-group-item-action">My Courses</Link>  
                         <Link to="/my-users" className="list-group-item list-group-item-action">My Students</Link> 
                         <Link to="/add-courses" className="list-group-item list-group-item-action">Add Courses</Link>
-                        <Link to="/logout" className="list-group-item list-group-item-action">Log Out</Link>
+                        <div onClick={handleLogout} className="list-group-item list-group-item-action" style={{cursor:"pointer"}}>Log Out</div>
                     </div>
         </div>
     );
