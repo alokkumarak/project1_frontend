@@ -27,6 +27,7 @@ import {
 import React, { useContext, useReducer, createContext, useEffect } from "react";
 import { reducer, initialState } from "../context/reducer";
 import StudentProfile from './User/StudentProfile';
+import Forum from './Forum';
 
 export const UserContext = createContext();
 export const studentToken = JSON.parse(localStorage.getItem("student"));
@@ -72,6 +73,7 @@ const Routing = () => {
               element={<TeacherDetail />}
             />
             <Route path="/course-detail/:course_id" element={<CourseDetail />} />
+            <Route path="/discussion-forum" element={<Forum />} />
            </>
         ) : (
           <> 
