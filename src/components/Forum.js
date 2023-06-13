@@ -2,7 +2,9 @@ import React from 'react'
 
 function Forum() {
   return (
-    <div>Forum</div>
+    <div>Forum
+        khfa;iionlkhihanshifh
+    </div>
   )
 }
 
