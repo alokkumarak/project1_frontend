@@ -57,6 +57,7 @@ const Routing = () => {
       <Switch>
         <Route path="/" element={<Home />} />
         <Route path="/all-courses" element={<AllCourses />} />
+        <Route path="/discussion-forum" element={<Forum />} />
          {studentToken || teacherToken ? (
           <> 
             {/* <Route path="/user-dashboard" element={<Dashboard />} /> */}
@@ -73,7 +74,7 @@ const Routing = () => {
               element={<TeacherDetail />}
             />
             <Route path="/course-detail/:course_id" element={<CourseDetail />} />
-            <Route path="/discussion-forum" element={<Forum />} />
+            
            </>
         ) : (
           <> 
@@ -82,7 +83,8 @@ const Routing = () => {
             <Route path="/teacher-login" element={<TeacherLogin />} />
             <Route path="/teacher-register" element={<TeacherRegister />} />
            </>
-        )} 
+        )}
+
       </Switch>
       <Footer />
     </div>

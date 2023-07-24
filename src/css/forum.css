@@ -1,0 +1,369 @@
+body {
+    font-family: source sans pro,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #373a3c;
+    background-color: #fff;
+}
+
+a {
+    color: rgba(7, 134, 134, 0.89);
+    text-decoration: none;
+}
+
+nav{
+    display: block;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+div {
+    display: block;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+.logo-font{
+    font-family: titillium web,sans-serif;
+    color: aliceblue                    ;
+}
+
+.home-page .banner h1 {
+    text-shadow: 0 1px 3px rgba(0,0,0,.3);
+    font-weight: 700!important;
+    text-align: center;
+    font-size: 3.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.home-page .banner p {
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300!important;
+    margin-bottom: 0;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div .banner{
+    background-color: rgb(40, 58, 58);
+    margin: 0px 0px 32px;
+    padding: 32px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.col-md-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 75%;
+    max-width: 75%;
+}   
+
+.container.page {
+    margin-top: 1.5rem;
+}
+
+.home-page .feed-toggle {
+    margin-bottom: -1px;
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-pills .nav-item {
+    float: left;
+}
+
+.nav-pills.outline-active .nav-link.active {
+    background: #fff!important;
+    border-bottom: 2px solid rgb(33, 90, 90)!important;
+    color: rgb(33, 90, 90)!important;
+}
+
+                                                                            /* .nav-pills::after {
+                                                                                content: "";
+                                                                                display: table;
+                                                                                clear: both;
+                                                                            } */
+
+.article-preview {
+    border-top: 1px solid rgba(0,0,0,.1);
+    padding: 1.5rem 0;
+}
+
+.article-preview .article-meta {
+    margin: 0 0 1rem;
+}
+
+.article-meta {
+    display: block;
+    position: relative;
+    font-weight: 300;
+}
+
+.article-meta img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    border-radius: 30px;
+}
+
+.article-meta .info {
+    margin: 0 1.5rem 0 0.3rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1rem;
+}
+
+.article-meta .info .author {
+    display: block;
+    font-weight: 500!important;
+}
+
+.article-meta .info .date {
+    color: #bbb;
+    font-size: .8rem;
+    display: block;
+}
+
+.preview-link {
+    color: inherit!important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.preview-link img {
+    vertical-align: top;
+    height: 15px;
+    width: 15px;
+    border-radius: 30px;
+}
+
+.article-preview .preview-link-h {
+    font-weight: 600!important;
+    font-size: 1.5rem!important;
+    margin-bottom: 3px;
+}
+
+.article-preview .preview-link p {
+    font-weight: 300;
+    font-size: 24px;
+    color: #999;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.3rem;
+}
+
+.article-preview .preview-link span {
+    max-width: 30%;
+    font-size: .8rem;
+    font-weight: 300;
+    color: #bbb;
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+
+.article-preview .preview-link ul {
+    float: right;
+    max-width: 50%;
+    vertical-align: top;
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+
+.article-preview .preview-link ul li {
+    font-weight: 300;
+    font-size: .8rem!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+
+.tag-default.tag-outline {
+    border: 1px solid #ddd;
+    color: #aaa!important;
+    background: 0 0!important;
+}
+
+ul.tag-list li {
+    display: inline-block!important;
+    vertical-align: top;
+}
+
+.tag-default {
+    color: #fff!important;
+    font-size: .8rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    white-space: nowrap;
+    margin-right: 3px;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+}
+
+.tag-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+.pull-xs-right {
+    float: right!important;
+}
+
+.btn-sm, .btn-group-sm>.btn {
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    border-radius: 0.2rem;
+}
+
+.more-sol{
+    border-radius: 1rem;
+}
+
+.btn-outline-primary {
+    color: rgba(7, 134, 134, 0.89);
+    background-image: none;
+    background-color: transparent;
+    border-color: rgba(7, 134, 134, 0.89);
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+}
+
+.page-item {
+    display: inline;
+}
+
+.page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: rgb(33, 90, 90);
+    border-color: rgb(33, 90, 90);
+}
+
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-bottom-left-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+}
+
+.page-link {
+    position: relative;
+    float: left;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    color: #5cb85c;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.col-md-3 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.home-page .sidebar {
+    padding: 5px 10px 10px;
+    background: #f3f3f3;
+    border-radius: 4px;
+}
+
+.home-page .sidebar p {
+    margin-bottom: 0.2rem;
+}
+
+.tag-default {
+    color: #fff!important;
+    font-size: .8rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    white-space: nowrap;
+    margin-right: 3px;
+    margin-bottom: 0.2rem;
+    display: inline-block;
+}
+
+.tag-default {
+    background-color: #818a91;
+}
+
+.tag-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+.scrollable-container {
+    height: 400px; /* Set the desired height of the scrollable container */
+    overflow: auto; /* Enable scrolling when content overflows */
+    position: relative; /* Ensure correct positioning of pseudo-elements */
+}
+  
+.scrollable-container::-webkit-scrollbar {
+    width: 0.5em; /* Width of the scrollbar */
+    background-color: transparent; /* Set the background color of the scrollbar track */
+} 
+  
+.scrollable-container::-webkit-scrollbar-thumb {
+    background-color: #fdfdfd; /* Color of the scrollbar thumb */
+}
+  
+.solution-box{
+    margin: 10px;
+}
