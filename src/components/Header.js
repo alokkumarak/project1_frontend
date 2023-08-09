@@ -1,5 +1,16 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { UserContext } from "./Main";
 function Header({ teacherToken, studentToken }) {
+  const navigate =useNavigate()
+  const { state, dispatch } = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch({ Type: 'CLEAR' })
+    navigate("/");
+    window.location.reload()
+}
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
@@ -55,10 +66,10 @@ function Header({ teacherToken, studentToken }) {
                     <Link className="dropdown-item" to="/teacher-profile">
                       Dashboard
                     </Link>
-                    <li>
-                      <Link className="dropdown-item" href="#">
+                    <li className="dropdown-item" style={{cursor:"pointer"}} onClick={handleLogout}>
+                      {/* <Link className="dropdown-item" href="#"> */}
                         Log Out
-                      </Link>
+                      {/* </Link> */}
                     </li>
                   </ul>
                 </li>
@@ -79,13 +90,13 @@ function Header({ teacherToken, studentToken }) {
                   <ul className="dropdown-menu">
                     {/* <Link className="dropdown-item" to="/user-login">Log In</Link>
                             <Link className="dropdown-item" to="/user-register">Register</Link> */}
-                    <Link className="dropdown-item" to="/user-Dashboard">
+                    <Link className="dropdown-item" to="/student-profile">
                       Dashboard
                     </Link>
-                    <li>
-                      <Link className="dropdown-item" href="#">
+                    <li className="dropdown-item" style={{cursor:"pointer"}} onClick={handleLogout}>
+                      {/* <Link className="dropdown-item" href="#"> */}
                         Log Out
-                      </Link>
+                      {/* </Link> */}
                     </li>
                   </ul>
                 </li>

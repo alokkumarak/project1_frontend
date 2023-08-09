@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 
-function StudentProfile(){
+function StudentProfile({studentToken}){
     return(
         <div className="container mt-4">
         <div className="row">
@@ -12,7 +12,7 @@ function StudentProfile(){
                         <div className="card-body text-center">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                             className="rounded-circle img-fluid" style={{width:'150px'}}/>
-                            <h5 className="my-3">Suman prakash</h5>
+                            <h5 className="my-3">{studentToken.student_name}</h5>
                         </div>
                         </div>
 
@@ -23,7 +23,7 @@ function StudentProfile(){
                                 <p className="mb-0">Full Name</p>
                             </div>
                             <div className="col-sm-9">
-                                <p className="text-muted mb-0">Suman Prakash</p>
+                                <p className="text-muted mb-0">{studentToken.student_name}</p>
                             </div>
                             </div>
                             <hr/>
@@ -32,7 +32,7 @@ function StudentProfile(){
                                 <p className="mb-0">Email</p>
                             </div>
                             <div className="col-sm-9">
-                                <p className="text-muted mb-0">Example@email.com</p>
+                                <p className="text-muted mb-0">{studentToken.student_email}</p>
                             </div>
                             </div>
                             <hr/>
@@ -41,7 +41,7 @@ function StudentProfile(){
                                 <p className="mb-0">Phone Number</p>
                             </div>
                             <div className="col-sm-9">
-                                <p className="text-muted mb-0">(097) 234-5678</p>
+                                <p className="text-muted mb-0">{studentToken.student_phone}</p>
                             </div>
                             </div>
                             <hr/>
@@ -50,7 +50,7 @@ function StudentProfile(){
                                 <p className="mb-0">Institute Name</p>
                             </div>
                             <div className="col-sm-9">
-                                <p className="text-muted mb-0">BCE Patna</p>
+                                <p className="text-muted mb-0">{studentToken.student_institute}</p>
                             </div>
                             </div>
                         </div>

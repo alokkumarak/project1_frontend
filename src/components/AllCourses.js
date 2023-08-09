@@ -9,10 +9,9 @@ import Axios from "axios";
 import { serverString } from "../utils/config";
 
 function AllCourses() {
-  // const query = useQuery(useLocation());
-  // const limit = query.get("limit");
   const [limit,setlimit]=useState(30)
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [data, setData] = useState(null);
 
   const getPrevItems = () => {
@@ -35,7 +34,7 @@ function AllCourses() {
 
   useEffect(() => {
     Axios.get(
-      `${serverString}/getAllCourses?limit=${limit}&currentPage=${currentPage}`
+      `${serverString}/getAllCourses?limit=${limit}&currentPage=${currentPage}&search=${search}`
     )
       .then((res) => {
         if (res.data) {
@@ -45,39 +44,37 @@ function AllCourses() {
       .catch((err) => {
         console.log("err", err);
       });
-  }, [limit, currentPage]);
+  }, [limit, currentPage,search]);
 
   return (
     <div>
       <h3 className="text-center mt-3">
-        <u>All Courses</u>
+        All Courses
       </h3>
-      <div style={{display:"flex"}}>
-      <div class="input-group mx-auto my-2 w-50">
+      <div className="container" style={{display:"flex",justifyContent:"space-between"}}>
+      <div class="input-group my-2" style={{width:"400px",height:"50px"}}>
         <input
           type="search"
           id="form1"
           placeholder="Search Courses"
           class="form-control"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
 
-        <button type="button" class="btn btn-primary btn-outline-secondary">
-          Search
-        </button>
       </div>
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent:"center",
-          marginRight:"20px"
+          justifyContent:"center"
         }}
       >
         <button
           className={
             "btn btn-secondary mr-2"
-             +
-            ((data ? data.skip <= 0 : true) && " text-muted")
+            //  +
+            // ((data ? data.skip <= 0 : true) && " text-muted")
           }
           style={{ marginRight: "20px" }}
           disabled={data ? data.skip <= 0 : true}
@@ -89,8 +86,8 @@ function AllCourses() {
         <button
           className={
             "btn btn-secondary mr-2"
-             +
-            ((data ? data.length + data.skip >= data.count : true) && "text-muted")
+            //  +
+            // ((data ? data.length + data.skip >= data.count : true) && "text-muted")
           }
           style={{ marginRight: "20px" }}
           disabled={data ? data.length + data.skip >= data.count : true}
