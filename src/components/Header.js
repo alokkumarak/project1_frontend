@@ -30,6 +30,18 @@ function Header({ teacherToken, studentToken }) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+              <Link className="nav-link" to="/quizHome">
+                Quiz
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/addReviews">
+                Add Review
+              </Link>
+            </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/all-courses">
                 Courses

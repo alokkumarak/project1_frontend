@@ -6,6 +6,7 @@ import Login from "./User/Login";
 import Register from "./User/Register";
 import Dashboard from "./User/Dashboard";
 import Mycourses from "./User/MyCourses";
+import AddReviews from './AddReviews';
 import TeacherProfile from './Teacher/TeacherProfile';
 import TeacherLogin from "./Teacher/TeacherLogin";
 import TeacherRegister from "./Teacher/TeacherRegister";
@@ -24,9 +25,16 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import React, { useContext, useReducer, createContext, useEffect } from "react";
+import React, { useContext, useReducer, createContext, useEffect, useState } from "react";
 import { reducer, initialState } from "../context/reducer";
 import StudentProfile from './User/StudentProfile';
+// import Quiz from './Quiz/Quiz';
+// import QuizQuestion from './Quiz/QuizQuestion';
+import axios from 'axios';
+import QuizHome from '../components/Quiz/Pages/Home/Home';
+import QuizQuestion from '../components/Quiz/Pages/Quiz/Quiz';
+import QuizResult from '../components/Quiz/Pages/Result/Result';
+
 
 export const UserContext = createContext();
 export const studentToken = JSON.parse(localStorage.getItem("student"));
@@ -50,12 +58,38 @@ const Routing = () => {
     }
   }, []);
 
+  //quiz 
+  const [questions, setQuestions] = useState();
+  const [name, setName] = useState();
+  const [score, setScore] = useState(0);
+  console.log(questions,"sdjkjasd");
+
+  const fetchQuestions = async (category = "", difficulty = "") => {
+    const { data } = await axios.get(
+      `https://opentdb.com/api.php?amount=10${
+        category && `&category=${category}`
+      }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
+    );
+
+    setQuestions(data.results);
+  };
+
+
   return (
     <div>
       <Header studentToken={studentToken} teacherToken={teacherToken} />
       <Switch>
         <Route path="/" element={<Home />} />
         <Route path="/all-courses" element={<AllCourses />} />
+        <Route path="/quizHome" element={<QuizHome name={name}
+              setName={setName}
+              fetchQuestions={fetchQuestions} />} />
+            <Route path='/quizQuestion' element={<QuizQuestion  name={name}
+              questions={questions}
+              score={score}
+              setScore={setScore}
+              setQuestions={setQuestions}/>} />
+            <Route path='/quizResult' element={<QuizResult name={name} score={score}  />} />
          {studentToken || teacherToken ? (
           <> 
             {/* <Route path="/user-dashboard" element={<Dashboard />} /> */}
@@ -79,6 +113,7 @@ const Routing = () => {
             <Route path="/user-register" element={<Register />} />
             <Route path="/teacher-login" element={<TeacherLogin />} />
             <Route path="/teacher-register" element={<TeacherRegister />} />
+            <Route path="/addReviews" element={<AddReviews />} />
            </>
         )} 
       </Switch>
