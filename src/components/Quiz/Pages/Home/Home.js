@@ -27,7 +27,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
   };
 
   return (
-    <div className="content">
+    <div className="content container my-5">
       <div className="settings">
         <span style={{ fontSize: 30 }}>Quiz Settings</span>
         <div className="settings__select">

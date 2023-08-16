@@ -8,6 +8,7 @@
 .subtitle {
   font-size: 25px;
   border: 1px solid black;
+  border-radius:10px;
   box-shadow: 4px 4px 2px black;
   padding: 5px 10px;
 }

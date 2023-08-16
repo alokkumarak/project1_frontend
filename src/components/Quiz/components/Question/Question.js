@@ -48,11 +48,11 @@ const Question = ({
   };
 
   return (
-    <div className="question">
-      <h1>Question {currQues + 1} :</h1>
-
+    <div className="question card mt-3 shadow-lg p-3 mb-5 bg-white rounded">
+      <h1 className="mt-3">Question {currQues + 1} :</h1>
+      <hr className="w-75"/>
       <div className="singleQuestion">
-        <h2>{questions[currQues].question}</h2>
+        <h3 className="mx-3 mt-1 mb-1">{questions[currQues].question}</h3>
         <div className="options">
           {error && <ErrorMessage>{error}</ErrorMessage>}
           {options &&
