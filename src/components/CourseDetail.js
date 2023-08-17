@@ -220,10 +220,12 @@ function CourseDetail() {
       });
   }, []);
 
+  console.log(oneCourseValues,"kljohkb");
+
   return (
     <Fragment>
       <div className="container mt-3">
-        {oneCourseValues ? (
+         {oneCourseValues ? (
           <div className="row">
             <div className="col-4">
               <img
@@ -266,8 +268,49 @@ function CourseDetail() {
               {/* <p className="fw-bold">Rating: 4.5/5</p> */}
             </div>
           </div>
-        ) : (
-          <div> loading........</div>
+        ) : ( 
+          <div className="row">
+            <div className="col-4">
+              <img
+                src=
+                  "/logo512.png"
+                
+                className="img-thumbnail"
+                alt="Course thumbnail"
+              />
+            </div>
+
+            <div className="col-8">
+              <h3> kjzbjfvdsj dbsjkjfdsv  </h3>
+              <p>
+                kjdzhfjdzhkczkjxjckzx nxzcbvdsjcv  xcm kzxmnckvndsknvks dj vdjnvbdsjbv</p>
+
+              <p className="fw-bold">
+                Course By: &nbsp;
+                <Link
+                  to={`/teacher-detail`}
+                > kjshadsa kjsadhidsf
+                  {/* {oneCourseValues.course_teacher_name
+                    ? oneCourseValues.course_teacher_name
+                    : "Teacher Name"} */}
+                </Link>
+              </p>
+              <p className="fw-bold">
+                Duration:{" "} niorgdf
+                {/* {oneCourseValues.course_duration
+                  ? oneCourseValues.course_duration
+                  : "Not mentioned"} */}
+              </p>
+              <p className="fw-bold">
+                Total Enrolled:{" "} 0
+                {/* {oneCourseValues.course_student_inrolled
+                  ? oneCourseValues.course_student_inrolled.length
+                  : "0"} */}
+              </p>
+              {/* <p className="fw-bold">Rating: 4.5/5</p> */}
+            </div>
+          </div>
+
         )}
 
         {/*Course Videos*/}
