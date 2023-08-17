@@ -30,7 +30,7 @@ const Rate = ({ count, rating, color, onRating }) => {
         onMouseEnter={() => setHoverRating(idx)}
         onMouseLeave={() => setHoverRating(0)}
       >
-        <StarIcon />
+        <StarIcon style={{ fontSize: 40 }}/>
       </IconButton>
       ));
   }, [count, rating, hoverRating]);

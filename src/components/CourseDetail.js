@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
+import Reviews from "./Reviews";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import StarIcon from '@mui/icons-material/Star';
 import Controls from "./Controls";
 import ReactPlayer from "react-player";
 import screenful from "screenfull";
 import Axios from "axios";
 import { serverString } from "../utils/config";
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   // height: '80%',
@@ -418,6 +421,8 @@ function CourseDetail() {
           </ul>
         </div>
 
+        
+
         {/* <h3 className="pb-1 mb-4 mt-5">Related Courses</h3>
         <div className="row mb-4">
           <div className="col-md-3">
@@ -446,7 +451,130 @@ function CourseDetail() {
             </div>
           </div>
         </div> */}
+
+        
+
       </div>
+      
+  <div className="container shadow card mt-5" style={{ width: "80rem" }}>
+  
+  <div className="card-body mb-3">
+  <h5 className="card-title">Rating and Reviews  <span style={{float:"right"}}>Total Reviews:135</span></h5>
+ <hr/><br/>
+  Rated 4.5 out of 5
+   <p className="card-text">
+       <div className="mt-2">
+        
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+          <div className="progress mt-2" style={{width:"80%"}}>
+            
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: "100%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            />
+          </div>
+          </div>  
+
+          <div className="mt-2">
+        
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+  
+          <div className="progress mt-2" style={{width:"80%"}}>
+            
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: "75%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            />
+          </div>
+          </div>  
+
+          <div className="mt-2">
+        
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        
+          <div className="progress mt-2" style={{width:"80%"}}>
+            
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: "60%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            />
+          </div>
+          </div>  
+
+          <div className="mt-2">
+        
+        <i><StarIcon /></i>
+        <i><StarIcon /></i>
+        
+          <div className="progress mt-2" style={{width:"80%"}}>
+            
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width:"30%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            />
+          </div>
+          </div>  
+
+          <div className="mt-2">
+        
+        <i><StarIcon /></i>
+        
+        
+          <div className="progress mt-2" style={{width:"80%"}}>
+            
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: "10%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
+              </div>
+              <span style={{float:"right"}}>56</span>
+            
+          </div>
+          </div>  
+   </p>
+
+
+ </div>
+ 
+ <Reviews/>
+ <Reviews/>
+ <Reviews/>
+ </div>
+     
+
+
+
+
+
     </Fragment>
   );
 }
