@@ -554,9 +554,7 @@ function CourseDetail() {
               aria-valuenow={100}
               aria-valuemin={0}
               aria-valuemax={100}
-            >
-              </div>
-              <span style={{float:"right"}}>56</span>
+            />
             
           </div>
           </div>  

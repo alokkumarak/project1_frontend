@@ -7,21 +7,21 @@ function Card({cardvalue}){
 
     }
     return(
-        <div className="card mx-3 shadow p-3 mb-5 bg-white rounded" style={{width:325,height:450}}>
+        <div className="card mx-3 shadow p-3 mb-5 bg-white rounded" style={{width:340,height:475}}>
         
            <div className="d-flex flex-column h-100">
                <div flex-grow-1>
                <Link to={`/course-detail/${cardvalue?.course_id}`}><img src={cardvalue?.course_thumbnail} className="card-img-top img-fluid" style={{width:300,height:300}} alt="Hollywood Sign on The Hill" /></Link>
                </div>
                 
-                <div className="card-body">
+                <div className="card-body" >
                 <h5 className="card-title">{cardvalue?.course_title}</h5>
-                <p className="card-text">
+                <div className="card-text" style={{width:325,height:80}}>
                 {truncate(`${cardvalue?.course_description}`,100)}
 
                 <Rating/>
+                </div>
                 
-                </p>
                 </div>
            </div>
         

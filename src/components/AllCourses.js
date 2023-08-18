@@ -110,7 +110,7 @@ function AllCourses() {
       </div>
       
 
-      <div className="row mx-4 my-3 g-4">
+      <div className="row my-3 ">
         {data?.data.map((da) => (
           <div className="col-sm-6 col-md-4 col-lg-3">
             <Card cardvalue={da} />
