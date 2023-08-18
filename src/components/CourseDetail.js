@@ -8,13 +8,13 @@ import Reviews from "./Reviews";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import StarIcon from '@mui/icons-material/Star';
+import StarIcon from "@mui/icons-material/Star";
 import Controls from "./Controls";
 import ReactPlayer from "react-player";
 import screenful from "screenfull";
 import Axios from "axios";
 import { serverString } from "../utils/config";
-
+import { Button } from "@mui/material";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   // height: '80%',
@@ -68,7 +68,7 @@ const format = (seconds) => {
 
 let count = 0;
 
-function CourseDetail() {
+function CourseDetail({ studentToken }) {
   let { course_id } = useParams();
   const [openModel, setOpenModel] = useState(false);
   const [oneCourseValues, setOneCourseValues] = useState();
@@ -77,6 +77,7 @@ function CourseDetail() {
   const playerContainerRef = useRef(null);
   const playerRef = useRef(null);
   const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal");
+  const [studentEnrolled, setStudentEnrolled] = useState(false);
   const [state, setState] = useState({
     pip: false,
     playing: false,
@@ -221,14 +222,44 @@ function CourseDetail() {
       .catch((err) => {
         console.log("error while fetching one course", err);
       });
+      Axios.get(`${serverString}/studentEnrolledStatus?course_id=${course_id}&student_id=${studentToken?.student_id}`)
+      .then((res)=>{
+        
+        if(res.data.enrolled){
+          setStudentEnrolled(true)
+        }
+      })
+      .catch((err)=>{
+        console.log("Error in getting enrollment status")
+      })
   }, []);
 
-  console.log(oneCourseValues,"kljohkb");
-
+  const EnrollStudent = () => {
+    Axios.post(
+      `${serverString}/enrollOneStudent`,
+      {
+        course_id,
+        student_id: studentToken?.student_id,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response) {
+          setStudentEnrolled(true)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Fragment>
       <div className="container mt-3">
-         {oneCourseValues ? (
+        {oneCourseValues ? (
           <div className="row">
             <div className="col-4">
               <img
@@ -268,44 +299,53 @@ function CourseDetail() {
                   ? oneCourseValues.course_student_inrolled.length
                   : "0"}
               </p>
-              {/* <p className="fw-bold">Rating: 4.5/5</p> */}
+              <p className="fw-bold">Rating: 4.5/5</p>
+              {studentToken &&
+                (studentEnrolled ? (
+                  <Button variant="contained" color="secondary">Enrolled</Button>
+                ) : (
+                  <Button variant="contained" color="secondary" onClick={() => EnrollStudent()}>Enroll Now</Button>
+                ))
+                
+              }
+              
             </div>
           </div>
-        ) : ( 
+        ) : (
           <div className="row">
             <div className="col-4">
               <img
-                src=
-                  "/logo512.png"
-                
+                src="/logo512.png"
                 className="img-thumbnail"
                 alt="Course thumbnail"
               />
             </div>
 
             <div className="col-8">
-              <h3> kjzbjfvdsj dbsjkjfdsv  </h3>
+              <h3> kjzbjfvdsj dbsjkjfdsv </h3>
               <p>
-                kjdzhfjdzhkczkjxjckzx nxzcbvdsjcv  xcm kzxmnckvndsknvks dj vdjnvbdsjbv</p>
+                kjdzhfjdzhkczkjxjckzx nxzcbvdsjcv xcm kzxmnckvndsknvks dj
+                vdjnvbdsjbv
+              </p>
 
               <p className="fw-bold">
                 Course By: &nbsp;
-                <Link
-                  to={`/teacher-detail`}
-                > kjshadsa kjsadhidsf
+                <Link to={`/teacher-detail`}>
+                  {" "}
+                  kjshadsa kjsadhidsf
                   {/* {oneCourseValues.course_teacher_name
                     ? oneCourseValues.course_teacher_name
                     : "Teacher Name"} */}
                 </Link>
               </p>
               <p className="fw-bold">
-                Duration:{" "} niorgdf
+                Duration: niorgdf
                 {/* {oneCourseValues.course_duration
                   ? oneCourseValues.course_duration
                   : "Not mentioned"} */}
               </p>
               <p className="fw-bold">
-                Total Enrolled:{" "} 0
+                Total Enrolled: 0
                 {/* {oneCourseValues.course_student_inrolled
                   ? oneCourseValues.course_student_inrolled.length
                   : "0"} */}
@@ -313,7 +353,6 @@ function CourseDetail() {
               {/* <p className="fw-bold">Rating: 4.5/5</p> */}
             </div>
           </div>
-
         )}
 
         {/*Course Videos*/}
@@ -321,107 +360,106 @@ function CourseDetail() {
         <div className="card mt-4">
           <h5 className="card-header">Course Videos</h5>
           <ul className="list-group list-group-flush">
-            {
-              courseVideos.length ? courseVideos?.map((video,index)=>(
+            {courseVideos.length ? (
+              courseVideos?.map((video, index) => (
                 <li className="list-group-item" key={index}>
-                 {video.video_title} 
-                <button
-                  className="btn btn-sm btn-secondary float-end"
-                  onClick={() => {
-                    openModelHandle();
-                  }}
-                >
-                  Play
-                </button>
-                <BootstrapDialog
-                  //  fullWidth={true}
-                  maxWidth="lg"
-                  // fullScreen={true}
-                  // onClose={closeModelHandle}
-                  aria-labelledby="customized-dialog-title"
-                  open={openModel}
-                  fullScreen={true}
-                >
-                  <BootstrapDialogTitle
-                    id="customized-dialog-title"
-                    onClose={closeModelHandle}
-                  >
-                    {video.video_title}
-                  </BootstrapDialogTitle>
-                  <DialogContent
-                    dividers
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
+                  {video.video_title}
+                  <button
+                    className="btn btn-sm btn-secondary float-end"
+                    onClick={() => {
+                      openModelHandle();
                     }}
                   >
-                    <div style={{ height: "850px", minWidth: "1400px" }}>
-                      <div
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={hanldeMouseLeave}
-                        ref={playerContainerRef}
-                        className="playerWrapper"
-                      >
-                        <ReactPlayer
-                          ref={playerRef}
-                          width="100%"
-                          height="100%"
-                          // url="https://youtu.be/Dli3czfNvlo"  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-                          url={video.video_file}
-                          pip={pip}
-                          playing={playing}
-                          controls={false}
-                          light={light}
-                          loop={loop}
-                          // playbackRate={playbackRate}
-                          volume={volume}
-                          muted={muted}
-                          onProgress={handleProgress}
-                          config={{
-                            file: {
-                              attributes: {
-                                crossorigin: "anonymous",
+                    Play
+                  </button>
+                  <BootstrapDialog
+                    //  fullWidth={true}
+                    maxWidth="lg"
+                    // fullScreen={true}
+                    // onClose={closeModelHandle}
+                    aria-labelledby="customized-dialog-title"
+                    open={openModel}
+                    fullScreen={true}
+                  >
+                    <BootstrapDialogTitle
+                      id="customized-dialog-title"
+                      onClose={closeModelHandle}
+                    >
+                      {video.video_title}
+                    </BootstrapDialogTitle>
+                    <DialogContent
+                      dividers
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div style={{ height: "850px", minWidth: "1400px" }}>
+                        <div
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={hanldeMouseLeave}
+                          ref={playerContainerRef}
+                          className="playerWrapper"
+                        >
+                          <ReactPlayer
+                            ref={playerRef}
+                            width="100%"
+                            height="100%"
+                            // url="https://youtu.be/Dli3czfNvlo"  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                            url={video.video_file}
+                            pip={pip}
+                            playing={playing}
+                            controls={false}
+                            light={light}
+                            loop={loop}
+                            // playbackRate={playbackRate}
+                            volume={volume}
+                            muted={muted}
+                            onProgress={handleProgress}
+                            config={{
+                              file: {
+                                attributes: {
+                                  crossorigin: "anonymous",
+                                },
                               },
-                            },
-                          }}
-                        />
-  
-                        <Controls
-                          ref={controlsRef}
-                          onSeek={handleSeekChange}
-                          onSeekMouseDown={handleSeekMouseDown}
-                          onSeekMouseUp={handleSeekMouseUp}
-                          onDuration={handleDuration}
-                          onRewind={handleRewind}
-                          onPlayPause={handlePlayPause}
-                          onFastForward={handleFastForward}
-                          playing={playing}
-                          played={played}
-                          elapsedTime={elapsedTime}
-                          totalDuration={totalDuration}
-                          onMute={hanldeMute}
-                          muted={muted}
-                          onVolumeChange={handleVolumeChange}
-                          onVolumeSeekDown={handleVolumeSeekDown}
-                          onChangeDispayFormat={handleDisplayFormat}
-                          // playbackRate={playbackRate}
-                          // onPlaybackRateChange={handlePlaybackRate}
-                          onToggleFullScreen={toggleFullScreen}
-                          volume={volume}
-                        />
+                            }}
+                          />
+
+                          <Controls
+                            ref={controlsRef}
+                            onSeek={handleSeekChange}
+                            onSeekMouseDown={handleSeekMouseDown}
+                            onSeekMouseUp={handleSeekMouseUp}
+                            onDuration={handleDuration}
+                            onRewind={handleRewind}
+                            onPlayPause={handlePlayPause}
+                            onFastForward={handleFastForward}
+                            playing={playing}
+                            played={played}
+                            elapsedTime={elapsedTime}
+                            totalDuration={totalDuration}
+                            onMute={hanldeMute}
+                            muted={muted}
+                            onVolumeChange={handleVolumeChange}
+                            onVolumeSeekDown={handleVolumeSeekDown}
+                            onChangeDispayFormat={handleDisplayFormat}
+                            // playbackRate={playbackRate}
+                            // onPlaybackRateChange={handlePlaybackRate}
+                            onToggleFullScreen={toggleFullScreen}
+                            volume={volume}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </DialogContent>
-                </BootstrapDialog>
-              </li>
-              )): <div>videos loading.........</div>
-            }
-           
+                    </DialogContent>
+                  </BootstrapDialog>
+                </li>
+              ))
+            ) : (
+              <div>videos loading.........</div>
+            )}
           </ul>
         </div>
-
-        
 
         {/* <h3 className="pb-1 mb-4 mt-5">Related Courses</h3>
         <div className="row mb-4">
@@ -451,128 +489,138 @@ function CourseDetail() {
             </div>
           </div>
         </div> */}
-
-        
-
       </div>
-      
-  <div className="container shadow card mt-5" style={{ width: "80rem" }}>
-  
-  <div className="card-body mb-3">
-  <h5 className="card-title">Rating and Reviews  <span style={{float:"right"}}>Total Reviews:135</span></h5>
- <hr/><br/>
-  Rated 4.5 out of 5
-   <p className="card-text">
-       <div className="mt-2">
-        
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-          <div className="progress mt-2" style={{width:"80%"}}>
-            
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: "100%" }}
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-          </div>
-          </div>  
 
-          <div className="mt-2">
-        
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-  
-          <div className="progress mt-2" style={{width:"80%"}}>
-            
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: "75%" }}
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-          </div>
-          </div>  
+      <div className="container shadow card mt-5" style={{ width: "80rem" }}>
+        <div className="card-body mb-3">
+          <h5 className="card-title">
+            Rating and Reviews{" "}
+            <span style={{ float: "right" }}>Total Reviews:135</span>
+          </h5>
+          <hr />
+          <br />
+          Rated 4.5 out of 5
+          <p className="card-text">
+            <div className="mt-2">
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <div className="progress mt-2" style={{ width: "80%" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "100%" }}
+                  aria-valuenow={100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+            </div>
 
-          <div className="mt-2">
-        
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        
-          <div className="progress mt-2" style={{width:"80%"}}>
-            
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: "60%" }}
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-          </div>
-          </div>  
+            <div className="mt-2">
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
 
-          <div className="mt-2">
-        
-        <i><StarIcon /></i>
-        <i><StarIcon /></i>
-        
-          <div className="progress mt-2" style={{width:"80%"}}>
-            
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width:"30%" }}
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-          </div>
-          </div>  
+              <div className="progress mt-2" style={{ width: "80%" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "75%" }}
+                  aria-valuenow={100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+            </div>
 
-          <div className="mt-2">
-        
-        <i><StarIcon /></i>
-        
-        
-          <div className="progress mt-2" style={{width:"80%"}}>
-            
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: "10%" }}
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-            
-          </div>
-          </div>  
-   </p>
+            <div className="mt-2">
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
 
+              <div className="progress mt-2" style={{ width: "80%" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "60%" }}
+                  aria-valuenow={100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+            </div>
 
- </div>
- 
- <Reviews/>
- <Reviews/>
- <Reviews/>
- </div>
-     
+            <div className="mt-2">
+              <i>
+                <StarIcon />
+              </i>
+              <i>
+                <StarIcon />
+              </i>
 
+              <div className="progress mt-2" style={{ width: "80%" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "30%" }}
+                  aria-valuenow={100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+            </div>
 
+            <div className="mt-2">
+              <i>
+                <StarIcon />
+              </i>
 
+              <div className="progress mt-2" style={{ width: "80%" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "10%" }}
+                  aria-valuenow={100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+            </div>
+          </p>
+        </div>
 
-
+        <Reviews />
+        <Reviews />
+        <Reviews />
+      </div>
     </Fragment>
   );
 }

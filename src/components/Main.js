@@ -62,7 +62,6 @@ const Routing = () => {
   const [questions, setQuestions] = useState();
   const [name, setName] = useState();
   const [score, setScore] = useState(0);
-  console.log(questions,"sdjkjasd");
 
   const fetchQuestions = async (category = "", difficulty = "") => {
     const { data } = await axios.get(
@@ -105,7 +104,7 @@ const Routing = () => {
               path="/teacher-detail/:teacher_id"
               element={<TeacherDetail />}
             />
-            <Route path="/course-detail/:course_id" element={<CourseDetail />} />
+            <Route path="/course-detail/:course_id" element={<CourseDetail studentToken={studentToken} />} />
            </>
         ) : (
           <> 

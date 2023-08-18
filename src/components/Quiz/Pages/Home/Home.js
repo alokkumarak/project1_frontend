@@ -8,7 +8,6 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Home = ({ name, setName, fetchQuestions }) => {
-  // console.log(fetchQuestions,"hejhbadfb");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
