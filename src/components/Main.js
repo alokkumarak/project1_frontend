@@ -105,6 +105,10 @@ const Routing = () => {
               element={<TeacherDetail />}
             />
             <Route path="/course-detail/:course_id" element={<CourseDetail studentToken={studentToken} />} />
+           
+            {
+              studentToken &&  <Route path="/addReviews/:course_id" element={<AddReviews studentToken={studentToken} />} />
+            }
            </>
         ) : (
           <> 
@@ -112,7 +116,7 @@ const Routing = () => {
             <Route path="/user-register" element={<Register />} />
             <Route path="/teacher-login" element={<TeacherLogin />} />
             <Route path="/teacher-register" element={<TeacherRegister />} />
-            <Route path="/addReviews" element={<AddReviews />} />
+            
            </>
         )} 
       </Switch>

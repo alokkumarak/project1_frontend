@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import Rate from "./Rate";
 
-const Rating = () => {
-  const [rating, setRating] = useState(0);
-  
+const Rating = ({rating, setRating}) => {
+ 
   return (
     <>
       <div className="row">
         <div className="col text-center">
           <Rate rating={rating} onRating={(rate) => setRating(rate)} />
-          <p>Rating - {rating}</p>
+          {/* <p>Rating - {rating}</p> */}
         </div>
       </div>
     </>

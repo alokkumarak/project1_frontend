@@ -36,11 +36,11 @@ function Header({ teacherToken, studentToken }) {
               </Link>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/addReviews">
                 Add Review
               </Link>
-            </li>
+            </li> */}
 
             <li className="nav-item">
               <Link className="nav-link" to="/all-courses">

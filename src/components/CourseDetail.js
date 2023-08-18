@@ -222,16 +222,17 @@ function CourseDetail({ studentToken }) {
       .catch((err) => {
         console.log("error while fetching one course", err);
       });
-      Axios.get(`${serverString}/studentEnrolledStatus?course_id=${course_id}&student_id=${studentToken?.student_id}`)
-      .then((res)=>{
-        
-        if(res.data.enrolled){
-          setStudentEnrolled(true)
+    Axios.get(
+      `${serverString}/studentEnrolledStatus?course_id=${course_id}&student_id=${studentToken?.student_id}`
+    )
+      .then((res) => {
+        if (res.data.enrolled) {
+          setStudentEnrolled(true);
         }
       })
-      .catch((err)=>{
-        console.log("Error in getting enrollment status")
-      })
+      .catch((err) => {
+        console.log("Error in getting enrollment status");
+      });
   }, []);
 
   const EnrollStudent = () => {
@@ -249,13 +250,14 @@ function CourseDetail({ studentToken }) {
     )
       .then((response) => {
         if (response) {
-          setStudentEnrolled(true)
+          setStudentEnrolled(true);
         }
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <Fragment>
       <div className="container mt-3">
@@ -302,13 +304,18 @@ function CourseDetail({ studentToken }) {
               <p className="fw-bold">Rating: 4.5/5</p>
               {studentToken &&
                 (studentEnrolled ? (
-                  <Button variant="contained" color="secondary">Enrolled</Button>
+                  <Button variant="contained" color="secondary">
+                    Enrolled
+                  </Button>
                 ) : (
-                  <Button variant="contained" color="secondary" onClick={() => EnrollStudent()}>Enroll Now</Button>
-                ))
-                
-              }
-              
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => EnrollStudent()}
+                  >
+                    Enroll Now
+                  </Button>
+                ))}
             </div>
           </div>
         ) : (
@@ -495,7 +502,16 @@ function CourseDetail({ studentToken }) {
         <div className="card-body mb-3">
           <h5 className="card-title">
             Rating and Reviews{" "}
-            <span style={{ float: "right" }}>Total Reviews:135</span>
+            <div
+              style={{ float: "right", display: "flex", alignItems: "center" }}
+            >
+              <span style={{ marginRight: "20px" }}>Total Reviews:135</span>
+              <Link to={`/addReviews/${course_id}`}>
+                <Button variant="contained" color="secondary">
+                  Add Your Review
+                </Button>
+              </Link>
+            </div>
           </h5>
           <hr />
           <br />
@@ -617,9 +633,13 @@ function CourseDetail({ studentToken }) {
           </p>
         </div>
 
+        {oneCourseValues?.course_review_rating?.map((review, index) => (
+          <Reviews review={review} key={index} />
+        ))}
+
+        {/* <Reviews  />
         <Reviews />
-        <Reviews />
-        <Reviews />
+        <Reviews /> */}
       </div>
     </Fragment>
   );
