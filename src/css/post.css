@@ -315,3 +315,10 @@
   font-size: 14px !important;
   color: rgb(56, 55, 55) !important;
 }
+
+/* cours filter */
+.hoverableFilter:hover{
+  color: #268ed4;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
