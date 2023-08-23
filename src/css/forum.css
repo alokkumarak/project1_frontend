@@ -54,18 +54,18 @@ ul {
     color: aliceblue                    ;
 }
 
-.home-page .banner h1 {
+.home-page .banner h3 {
     text-shadow: 0 1px 3px rgba(0,0,0,.3);
     font-weight: 700!important;
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     padding-bottom: 0.5rem;
 }
 
 .home-page .banner p {
     color: #fff;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 300!important;
     margin-bottom: 0;
 }
@@ -80,7 +80,7 @@ ul {
 div .banner{
     background-color: rgb(40, 58, 58);
     margin: 0px 0px 32px;
-    padding: 32px;
+    padding: 20px;
 }
 
 .row {
@@ -104,7 +104,7 @@ div .banner{
 }
 
 .home-page .feed-toggle {
-    margin-bottom: -1px;
+    margin-bottom: 1px;
 }
 
 .nav {
@@ -162,6 +162,7 @@ div .banner{
 .article-meta .info .author {
     display: block;
     font-weight: 500!important;
+    text-decoration: none;
 }
 
 .article-meta .info .date {
@@ -179,8 +180,8 @@ div .banner{
 
 .preview-link img {
     vertical-align: top;
-    height: 15px;
-    width: 15px;
+    height: 25px;
+    width: 25px;
     border-radius: 30px;
 }
 
@@ -366,4 +367,8 @@ ul.tag-list li {
   
 .solution-box{
     margin: 10px;
+}
+
+.submit-button{
+    border-radius: 10px;
 }
