@@ -1,73 +1,26 @@
-body {
-    font-family: source sans pro,sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #373a3c;
-    background-color: #fff;
+
+.forum_header{
+    display: flex   ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.search_bar{
+    min-width:50%;
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid gray;
 }
 
-a {
-    color: rgba(7, 134, 134, 0.89);
-    text-decoration: none;
+.forum_ans{
+    margin-left: 30px;
 }
 
-nav{
-    display: block;
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-div {
-    display: block;
-}
-
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-
-.btn {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.25;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-}
 
 .logo-font{
     font-family: titillium web,sans-serif;
     color: aliceblue                    ;
-}
-
-.home-page .banner h3 {
-    text-shadow: 0 1px 3px rgba(0,0,0,.3);
-    font-weight: 700!important;
-    text-align: center;
-    font-size: 2.5rem;
-    padding-bottom: 0.5rem;
-}
-
-.home-page .banner p {
-    color: #fff;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 300!important;
-    margin-bottom: 0;
 }
 
 .container {
@@ -75,12 +28,6 @@ ul {
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
-}
-
-div .banner{
-    background-color: rgb(40, 58, 58);
-    margin: 0px 0px 32px;
-    padding: 20px;
 }
 
 .row {
@@ -99,8 +46,8 @@ div .banner{
     max-width: 75%;
 }   
 
-.container.page {
-    margin-top: 1.5rem;
+.container{
+    margin-top:10px;
 }
 
 .home-page .feed-toggle {
@@ -153,37 +100,68 @@ div .banner{
 }
 
 .article-meta .info {
-    margin: 0 1.5rem 0 0.3rem;
+    margin: 0 0 0 15px;
     display: inline-block;
     vertical-align: middle;
     line-height: 1rem;
 }
+.info div{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.info span{
+    font-size: 12px;
+    color: gray;
+    font-weight: bold;
+}
 
-.article-meta .info .author {
+/* .article-meta .info .author {
     display: block;
     font-weight: 500!important;
     text-decoration: none;
-}
+} */
 
-.article-meta .info .date {
+
+/* .article-meta .info .date {
     color: #bbb;
     font-size: .8rem;
     display: block;
-}
+} */
 
 .preview-link {
-    color: inherit!important;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    
+    /* color: inherit !important; */
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-.preview-link img {
+.forum_ind_ans{
+  display: flex;
+}
+
+.forum_ind_ans img {
+    vertical-align: top;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    margin-right:10px;
+} 
+.forum_name{
+    color: gray;
+    font-size: 14px;
+}
+.forum_name b{
+    font-size: 17px;
+    color: black;
+}
+
+
+/* .preview-link img {
     vertical-align: top;
     height: 25px;
     width: 25px;
     border-radius: 30px;
-}
+} */
 
 .article-preview .preview-link-h {
     font-weight: 600!important;
@@ -191,22 +169,21 @@ div .banner{
     margin-bottom: 3px;
 }
 
-.article-preview .preview-link p {
+/* .article-preview .preview-link p {
     font-weight: 300;
     font-size: 24px;
     color: #999;
     margin-bottom: 10px;
     font-size: 1rem;
     line-height: 1.3rem;
-}
-
-.article-preview .preview-link span {
-    max-width: 30%;
+} */
+.preview-link span {
+    
     font-size: .8rem;
     font-weight: 300;
     color: #bbb;
     vertical-align: top;
-    margin-bottom: 20px;
+    margin-left: 40px;
 }
 
 .article-preview .preview-link ul {
@@ -264,6 +241,7 @@ ul.tag-list li {
 
 .more-sol{
     border-radius: 1rem;
+
 }
 
 .btn-outline-primary {
@@ -351,7 +329,7 @@ ul.tag-list li {
 }
 
 .scrollable-container {
-    height: 400px; /* Set the desired height of the scrollable container */
+    height: 500px; /* Set the desired height of the scrollable container */
     overflow: auto; /* Enable scrolling when content overflows */
     position: relative; /* Ensure correct positioning of pseudo-elements */
 }
@@ -367,6 +345,7 @@ ul.tag-list li {
   
 .solution-box{
     margin: 10px;
+    margin-bottom: 20px;
 }
 
 .submit-button{

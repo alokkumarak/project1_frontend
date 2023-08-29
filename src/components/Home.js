@@ -29,7 +29,7 @@ function Home() {
     Axios.get(`${serverString}/getPopularTeacher?limit=${limit}`)
       .then((res) => {
         if (res.data) {
-          console.log("res.data", res.data);
+          // console.log("res.data", res.data);
           setPopularTeacher(res.data.data);
         }
       })
