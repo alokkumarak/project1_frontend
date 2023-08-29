@@ -34,6 +34,7 @@ import axios from 'axios';
 import QuizHome from '../components/Quiz/Pages/Home/Home';
 import QuizQuestion from '../components/Quiz/Pages/Quiz/Quiz';
 import QuizResult from '../components/Quiz/Pages/Result/Result';
+import Forum from './Forum';
 
 
 export const UserContext = createContext();
@@ -89,6 +90,7 @@ const Routing = () => {
               setScore={setScore}
               setQuestions={setQuestions}/>} />
             <Route path='/quizResult' element={<QuizResult name={name} score={score}  />} />
+        <Route path="/discussion-forum" element={<Forum />} />
          {studentToken || teacherToken ? (
           <> 
             {/* <Route path="/user-dashboard" element={<Dashboard />} /> */}
@@ -118,7 +120,8 @@ const Routing = () => {
             <Route path="/teacher-register" element={<TeacherRegister />} />
             
            </>
-        )} 
+        )}
+
       </Switch>
       <Footer />
     </div>
