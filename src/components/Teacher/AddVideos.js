@@ -128,6 +128,9 @@ function AddVideos() {
                       <div style={{ display: "flex" }}>
                         Video : &nbsp;{videoVal.video_file.name}
                       </div>
+                      <div style={{ display: "flex" }}>
+                        Resource: React Intro
+                      </div>
                       <div
                         style={{
                           display: "flex",
@@ -139,16 +142,17 @@ function AddVideos() {
                         className="btn btn-danger mt-2"
                         onClick={() => removeFromVideoArr(index)}
                       >
-                        remove{" "}
+                        Remove{" "}
                       </div>
                     </div>
                   ))}
                 <div className="d-flex flex-column align-items-center">
                   {videoBoxOpen && (
-                    <div className="d-flex justify-content-around w-100 align-items-center mb-5">
+                      <div className="card w-100 mx-3 p-3 shadow mb-5 bg-white rounded">
+        
                       <div className="mb-3">
                         <label for="title" className="form-label">
-                          Video title
+                        <span style={{color:"red"}}>*</span> Video title
                         </label>
                         <input
                           type="text"
@@ -160,7 +164,7 @@ function AddVideos() {
                       </div>
                       <div className="mb-3">
                         <label for="title" className="form-label">
-                          Upload Video
+                        <span style={{color:"red"}}>*</span> Upload Video
                         </label>
                         <input
                           type="file"
@@ -170,25 +174,44 @@ function AddVideos() {
                           onChange={(e) => setVideoVideo(e.target.files[0])}
                         />
                       </div>
+                      
+                      <div className="mb-2">
+                        <label for="title" className="form-label">
+                        <span style={{color:"red"}}>*</span> Upload Resources
+                        </label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            placeholder="Add Resources"
+                          />
+                       </div>
                       <div
-                        className="btn btn-light btn-outline-success btn-lg"
+                       className="btn btn-dark"
+                       style={{
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        width: "100px",
+                        marginLeft: "auto",
+                      }}
                         onClick={tempSaveVideo}
                       >
-                        save
+                        Save
                       </div>
+                      
                     </div>
                   )}
                   <button
-                    className="btn btn-light btn-outline-primary btn-lg w-50 h-100 mb-3"
+                    className="btn btn-light btn-outline-dark btn-lg w-50 h-100 mb-4"
                     onClick={openVideoBox}
                   >
                     <span>
-                      Click here to Add Videos <AddToQueueIcon />
+                      Click To Add More <AddToQueueIcon />
                     </span>
                   </button>
 
                   <button
-                    className="btn btn-primary w-25 h-100"
+                    className="btn btn-dark w-20 h-100"
                     onClick={courseVideoUpload}
                   >
                     Submit
