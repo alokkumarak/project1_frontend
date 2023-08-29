@@ -41,7 +41,7 @@ function CardCarousel({carouselData, popularTeacher}){
 
               {
                 popularTeacher &&
-                <Carousel responsive={responsive}>
+                <Carousel infinite={true} responsive={responsive}>
                 {
                   popularTeacher?.map((teacher, index) => (
                       <div className="card mx-3 mt-0 h-100" key={index}> 
