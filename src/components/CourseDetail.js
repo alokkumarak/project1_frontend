@@ -20,6 +20,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOfflineOutlined';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import laodingIcon from "../assets/loadingIcon.png";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   // height: '80%',
@@ -73,6 +74,15 @@ const format = (seconds) => {
 
 let count = 0;
 
+function calculateAverageRating(data) {
+  const totalRatings = data?.length;
+  const sumOfRatings = data.reduce((acc, item) => acc + item.student_rating, 0);
+  const averageRating = totalRatings > 0 ? sumOfRatings / totalRatings : 0;
+  const roundedAverageRating = Math.ceil(averageRating);
+
+  return roundedAverageRating;
+}
+
 function CourseDetail({ studentToken }) {
   let { course_id } = useParams();
   const [openModel, setOpenModel] = useState(false);
@@ -83,6 +93,9 @@ function CourseDetail({ studentToken }) {
   const playerRef = useRef(null);
   const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal");
   const [studentEnrolled, setStudentEnrolled] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const [state, setState] = useState({
     pip: false,
     playing: false,
@@ -220,12 +233,13 @@ function CourseDetail({ studentToken }) {
               }
             })
             .catch((error) => {
-              console.log("error in fetching videos", error);
+              toast.error("error in fetching videos",{position:"top-center",theme:"colored"});
+
             });
         }
       })
       .catch((err) => {
-        console.log("error while fetching one course", err);
+        toast.error("error while fetching one course",{position:"top-center",theme:"colored"});
       });
     Axios.get(
       `${serverString}/studentEnrolledStatus?course_id=${course_id}&student_id=${studentToken?.student_id}`
@@ -241,6 +255,7 @@ function CourseDetail({ studentToken }) {
   }, []);
 
   const EnrollStudent = () => {
+    setIsLoading(true);
     Axios.post(
       `${serverString}/enrollOneStudent`,
       {
@@ -260,9 +275,16 @@ function CourseDetail({ studentToken }) {
         }
       })
       .catch((err) => {
-        console.log(err);
-      });
+        toast.error(err?.response?.data?.message,{position:"top-center",theme:"colored"});
+      })
+      .finally(() => {
+        setIsLoading(false);
+      }
+      );
   };
+
+  const averageRating = oneCourseValues ? calculateAverageRating(oneCourseValues?.course_review_rating) : 0;
+
 
   return (
     <Fragment>
@@ -307,7 +329,7 @@ function CourseDetail({ studentToken }) {
                   ? oneCourseValues.course_student_inrolled.length
                   : "0"}
               </p>
-              <p className="fw-bold">Rating: 4.5/5</p>
+              <p className="fw-bold">Rating: {averageRating}/5</p>
               {studentToken &&
                 (studentEnrolled ? (
                   <Button variant="contained" color="secondary">
@@ -319,8 +341,20 @@ function CourseDetail({ studentToken }) {
                     variant="contained"
                     color="secondary"
                     onClick={() => {EnrollStudent()}}
-                  >                                            
-                    Enroll Now
+                    disabled={isLoading}
+                  >     
+                  {
+                    isLoading ? 
+                      <div>
+                      <img
+                        src={laodingIcon}
+                        style={{ width: "25px", height: "25px" }}
+                      />{" "}
+                      Enrolling you....
+                    </div>:
+                    "Enroll Now"
+                  }                                       
+                    
                   </Button>
                 ))}
                 <ToastContainer/>
@@ -527,7 +561,7 @@ function CourseDetail({ studentToken }) {
           </h5>
           <hr />
           <br />
-          Rated 4.5 out of 5
+          Rated {averageRating} out of 5
           <p className="card-text">
             <div className="mt-2">
               <i>

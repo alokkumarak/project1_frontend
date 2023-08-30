@@ -62,7 +62,7 @@ function AddVideos() {
                   .then((res) => {
                     if (res.data) {
                         localStorage.removeItem("course_thumb");
-                        console.log(res);
+                        toast.success(res?.data?.message,{position:"top-center",theme:"colored"});
                         navigate("/add-courses");
                         window.location.reload();
                         videoValueArr = [];
@@ -70,14 +70,14 @@ function AddVideos() {
                     }
                   })
                   .catch((err) => {
-                    console.log(err, "in video upload");
+                    toast.error(err?.response?.data?.error,{position:"top-center",theme:"colored"});
                   });
               }
             }
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(err?.response?.data?.error,{position:"top-center",theme:"colored"});
         });
     });
   };
@@ -220,6 +220,7 @@ function AddVideos() {
                   >
                     Submit
                   </button>
+                  <ToastContainer />
                 </div>
               </div>
             </div>

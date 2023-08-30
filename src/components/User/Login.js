@@ -3,46 +3,64 @@ import React, { useState, useContext } from "react";
 import Axios from "axios";
 import { serverString } from "../../utils/config";
 import { UserContext } from "../Main";
+import { ToastContainer, toast } from "react-toastify";
+import laodingIcon from "../../assets/loadingIcon.png";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const { state, dispatch } = useContext(UserContext);
 
   const loginStudent = () => {
+    setIsLoading(true);
     if (!email || !password) {
       alert("Please fill all the fields");
+      setIsLoading(false);
       return;
     }
     if (!email.includes("@")) {
+      setIsLoading(false);
       alert("Please enter a valid email");
       return;
     }
-    Axios.post(`${serverString}/signin/student`, {
-      student_email: email,
-      student_password: password,
-    },
-    {
+    Axios.post(
+      `${serverString}/signin/student`,
+      {
+        student_email: email,
+        student_password: password,
+      },
+      {
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-    }
+      }
     )
       .then((response) => {
-        if(response){
+        if (response) {
+          toast.success(response?.data?.message, {
+            position: "top-center",
+            theme: "colored",
+          });
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("student", JSON.stringify(response.data.user));
           dispatch({ type: "STUDENT", payload: response.data.user });
-          // navigate("/");
-          setEmail("");
-          setPassword("");
+
           window.location.reload();
         }
-       
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err?.response?.data?.error, {
+          position: "top-center",
+          theme: "colored",
+        });
+      })
+      .finally(() => {
+        setEmail("");
+        setPassword("");
+        setIsLoading(false);
       });
   };
 
@@ -80,9 +98,21 @@ function Login() {
                   className="btn btn-dark btn-lg btn-block w-100"
                   type="submit"
                   onClick={loginStudent}
+                  disabled={isLoading}
                 >
-                  Login
+                  {isLoading ? (
+                    <div>
+                      <img
+                        src={laodingIcon}
+                        style={{ width: "30px", height: "30px" }}
+                      />{" "}
+                      Student Login....{" "}
+                    </div>
+                  ) : (
+                    "Student Login"
+                  )}
                 </button>
+                <ToastContainer />
                 <hr className="my-4" />
 
                 <p>

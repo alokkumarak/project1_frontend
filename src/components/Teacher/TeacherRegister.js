@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { serverString } from "../../utils/config";
+import { ToastContainer, toast } from "react-toastify";
+import laodingIcon from "../../assets/loadingIcon.png";
 
 function TeacherRegister() {
   const [name, setName] = useState("");
@@ -10,51 +12,68 @@ function TeacherRegister() {
   const [phone, setPhone] = useState("");
   const [institute, setInstitute] = useState("");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const registerTeacher = () => {
+    setIsLoading(true);
     if (!name || !email || !password || !phone || !institute) {
       alert("Please fill all the fields");
+      setIsLoading(false);
       return;
     }
     if (phone.length !== 10) {
       alert("Please enter a valid phone number");
+      setIsLoading(false);
       return;
     }
     if (!email.includes("@")) {
       alert("Please enter a valid email");
+      setIsLoading(false);
       return;
     }
     if (password.length < 6) {
       alert("Password must be atleast 6 characters long");
+      setIsLoading(false);
       return;
     }
 
-    Axios.post(`${serverString}/signup/teacher`, {
-      teacher_name: name,
-      teacher_email: email,
-      teacher_password: password,
-      teacher_phone: phone,
-      teacher_institute: institute,
-    },
-    {
+    Axios.post(
+      `${serverString}/signup/teacher`,
+      {
+        teacher_name: name,
+        teacher_email: email,
+        teacher_password: password,
+        teacher_phone: phone,
+        teacher_institute: institute,
+      },
+      {
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-    }
+      }
     )
       .then((response) => {
-        if(response){
+        if (response) {
+          toast.success(response?.data?.message, {
+            position: "top-center",
+            theme: "colored",
+          });
           navigate("/teacher-login");
-          setEmail("");
           setName("");
-          setPassword("");
-          setPhone("");
           setInstitute("");
         }
-       
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err?.response?.data?.error, {
+          position: "top-center",
+          theme: "colored",
+        });
+      })
+      .finally(() => {
+        setEmail("");
+        setPassword("");
+        setPhone("");
+        setIsLoading(false);
       });
   };
 
@@ -77,7 +96,6 @@ function TeacherRegister() {
                     className="form-control form-control-lg"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-
                   />
                 </div>
 
@@ -88,7 +106,6 @@ function TeacherRegister() {
                     className="form-control form-control-lg"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-
                   />
                 </div>
 
@@ -109,7 +126,6 @@ function TeacherRegister() {
                     className="form-control form-control-lg"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-
                   />
                 </div>
 
@@ -120,7 +136,6 @@ function TeacherRegister() {
                     className="form-control form-control-lg"
                     value={institute}
                     onChange={(e) => setInstitute(e.target.value)}
-
                   />
                 </div>
 
@@ -128,9 +143,21 @@ function TeacherRegister() {
                   className="btn btn-dark btn-lg btn-block w-100"
                   type="submit"
                   onClick={registerTeacher}
+                  disabled={isLoading}
                 >
-                  Register
+                  {isLoading ? (
+                    <div>
+                      <img
+                        src={laodingIcon}
+                        style={{ width: "30px", height: "30px" }}
+                      />{" "}
+                      Teacher Registering....{" "}
+                    </div>
+                  ) : (
+                    "Teacher Register"
+                  )}
                 </button>
+                <ToastContainer />
                 <hr className="my-4" />
 
                 <p>

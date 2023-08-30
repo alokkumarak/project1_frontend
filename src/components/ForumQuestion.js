@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ForumAnwer from "./ForumAnwer";
 import { Button } from "@mui/material";
 import Axios from "axios";
 import { serverString } from "../utils/config";
+import { ToastContainer, toast } from 'react-toastify';
 
 function ForumQuestion({ forum, ansById, andByName }) {
   const [forumAns, setForumAns] = useState(null);
   const dateObj = new Date(forum.creaed_at);
   const options = { year: "numeric", month: "short", day: "2-digit" };
   const formattedDate = dateObj.toLocaleString("en-US", options);
+  
 
   const submitAnswer = () => {
     const data = {
@@ -23,14 +25,15 @@ function ForumQuestion({ forum, ansById, andByName }) {
       },
     })
       .then((response) => {
+        toast.success(response?.data?.message,{position:"top-center",theme:"colored"});
         setForumAns("");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error?.response?.data?.error,{position:"top-center",theme:"colored"});
+        
       });
   };
 
-  // console.log(forum);
 
   return (
     <div className="article-preview mt-2">
@@ -74,6 +77,7 @@ function ForumQuestion({ forum, ansById, andByName }) {
             >
               Submit
             </Button>
+            <ToastContainer />
           </div>
         </div>
       </div>

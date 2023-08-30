@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { serverString } from "../utils/config";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import { ToastContainer, toast } from 'react-toastify';
 
 function AllCourses() {
   const [limit, setlimit] = useState(30);
@@ -44,7 +45,8 @@ function AllCourses() {
         }
       })
       .catch((err) => {
-        console.log("err", err);
+        toast.error("Error!!!!!",{position:"top-center",theme:"colored"});
+        
       });
   }, [limit, currentPage, search, filterData]);
 
@@ -183,6 +185,7 @@ function AllCourses() {
             : "page count exceeded"}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -6,15 +6,19 @@ import { useParams } from 'react-router-dom';
 import { serverString } from '../utils/config';
 import { useNavigate } from 'react-router-dom';
 import Axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import laodingIcon from '../assets/loadingIcon.png';
 
 function AddReviews({studentToken}) {
   const [studentReview, setStudentReview]=useState("")
   const [rating, setRating] = useState(0);
   const { course_id } = useParams()
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate =useNavigate()
 
 const submitReviewRating =()=>{
+  setIsLoading(true);
   const data ={
     course_id,
     student_id:studentToken?.student_id,
@@ -39,8 +43,12 @@ const submitReviewRating =()=>{
       }
     })
     .catch((err) => {
-      console.log(err);
-    });
+      toast.error(err?.response?.data?.error,{position:"top-center",theme:"colored"});
+    })
+    .finally(() => {
+      setIsLoading(false);
+    }
+    )
 
 }
 
@@ -75,9 +83,23 @@ const submitReviewRating =()=>{
         />
         </div>
         
-        <button onClick={()=>submitReviewRating()} type="submit" className="btn my-3 btn-dark w-50">
-        Submit
+        <button onClick={()=>submitReviewRating()} type="submit" className="btn my-5 btn-dark w-50"
+        disabled={isLoading}
+        >
+          {isLoading ? 
+            <div>
+            <img
+              src={laodingIcon}
+              style={{ width: "20px", height: "20px" }}
+            />{" "}
+            Submitting....
+          </div> :
+          "Submit Review"
+          }
+
+
         </button>
+        <ToastContainer />
       </div>
     
       

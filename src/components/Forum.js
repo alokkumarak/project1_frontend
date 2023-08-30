@@ -4,10 +4,14 @@ import ForumQuestion from "./ForumQuestion";
 import { Button } from "@mui/material";
 import  Axios  from "axios";
 import { serverString } from "../utils/config";
+import { ToastContainer, toast } from 'react-toastify';
+
 function Forum({ studentToken, teacherToken }) {
   const [ForumQuestions, setForumQuestions] = useState("");
   const [forumData, setForumData] = useState(null);
   const [inQueue, setInQueue] = useState(false);
+  const [search, setSearch] = useState("");
+
 
   const asked_by_id = studentToken ? studentToken.student_id : teacherToken ? teacherToken.teacher_id : null;
   const asked_by_name = studentToken ? studentToken.student_name : teacherToken ? teacherToken.teacher_name : null;
@@ -26,41 +30,29 @@ function Forum({ studentToken, teacherToken }) {
           }
           )
     .then((response) => {
-      // console.log(response);
+      
+      toast.success(response?.data?.message,{position:"top-center",theme:"colored"});
       setForumQuestions("");
       setInQueue(true);
-      
     })
     .catch((error) => {
-      console.log(error);
+      toast.error(error?.response?.data?.error,{position:"top-center",theme:"colored"});
     }
     );
   };
 
-
-  // useEffect(() => {
-  //   console.log("useEffect");
-  //   Axios.get(`${serverString}/getAllForums`)
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   }
-  //   );
-  // }, []);
-
   useEffect(() => {
-    Axios.get(`${serverString}/getAllForums`)
+    Axios.get(`${serverString}/getForumBySearch?search=${search}`)
       .then((res) => {
         if (res.data) {
           setForumData(res.data.data);
         }
       })
       .catch((err) => {
-        console.log("err", err);
+        setForumData(null)
+        
       });
-  }, [inQueue]);
+  }, [inQueue, search]);
 
 
 
@@ -77,18 +69,23 @@ function Forum({ studentToken, teacherToken }) {
                 type="text"
                 placeholder="Search..."
                 className="search_bar"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             <div className="scrollable-container">
-              {forumData &&
+              {forumData ?
                 forumData.map((forum) => (
                   <ForumQuestion
                     key={forum.forum_id}
                     forum={forum}
                     ansById={asked_by_id}
                     andByName={asked_by_name}
+                    
                   />
-                ))}
+                ))
+              : <h3>No Questions Found</h3>
+              }
             </div>
           </div>
 
@@ -136,6 +133,7 @@ function Forum({ studentToken, teacherToken }) {
             >
               Submit
             </Button>
+            <ToastContainer />
           </div>
         </div>
       ) : (
