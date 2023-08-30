@@ -2,6 +2,8 @@ import {Link, useNavigate} from "react-router-dom";
 import React,{useState} from "react";
 import Axios from "axios";
 import { serverString } from "../../utils/config";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register(){
     const [name,setName]=useState("");
@@ -49,6 +51,7 @@ function Register(){
             setPassword("");
             setPhone("");
             setInstitute("");
+            toast.success(response?.data?.message,{position:"top-center",theme:"colored"});
             }
 
         })
@@ -90,6 +93,7 @@ function Register(){
                         </div>
 
                         <button className="btn btn-dark btn-lg btn-block w-100" type="submit" onClick={registerStudent}>Register</button>
+                        <ToastContainer/>
                         <hr className="my-4"/>
 
 

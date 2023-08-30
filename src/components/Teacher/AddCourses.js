@@ -80,8 +80,8 @@ function AddCourses() {
         <aside className="col-md-3">
           <TeacherSidebar />
         </aside>
-        <div className="col-6">
-          <div className="card">
+        <div className="col-9">
+          <div className="card shadow-lg ">
             <h5 className="card-header">Add Course</h5>
             <div className="card-body">
               {/* <form> */}
@@ -104,6 +104,7 @@ function AddCourses() {
                 <textarea
                   className="form-control"
                   id="description"
+                  rows={6}
                   value={courseDes}
                   onChange={(e) => setCourseDes(e.target.value)}
                 />
@@ -136,9 +137,12 @@ function AddCourses() {
                   showCheckbox
                 />
               </div>
-              <button className="btn btn-primary" onClick={cloudinaryUpload}>
+              <div className="text-center mt-4">
+              <button className="btn btn-dark" onClick={cloudinaryUpload}>
                 Proceed
               </button>
+              </div>
+              
             </div>
           </div>
         </div>

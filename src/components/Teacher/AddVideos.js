@@ -9,6 +9,8 @@ import { serverString } from "../../utils/config";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddVideos() {
   const navigate = useNavigate();
@@ -60,9 +62,11 @@ function AddVideos() {
                   .then((res) => {
                     if (res.data) {
                         localStorage.removeItem("course_thumb");
+                        console.log(res);
                         navigate("/add-courses");
                         window.location.reload();
                         videoValueArr = [];
+    
                     }
                   })
                   .catch((err) => {

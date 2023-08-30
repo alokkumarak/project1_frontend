@@ -15,6 +15,11 @@ import screenful from "screenfull";
 import Axios from "axios";
 import { serverString } from "../utils/config";
 import { Button } from "@mui/material";
+import test1 from "../assets/test1.pdf";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOfflineOutlined';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   // height: '80%',
@@ -250,6 +255,7 @@ function CourseDetail({ studentToken }) {
     )
       .then((response) => {
         if (response) {
+          toast.success(response?.data?.message,{position:"top-center",theme:"colored"});
           setStudentEnrolled(true);
         }
       })
@@ -306,16 +312,18 @@ function CourseDetail({ studentToken }) {
                 (studentEnrolled ? (
                   <Button variant="contained" color="secondary">
                     Enrolled
+            
                   </Button>
                 ) : (
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => EnrollStudent()}
-                  >
+                    onClick={() => {EnrollStudent()}}
+                  >                                            
                     Enroll Now
                   </Button>
                 ))}
+                <ToastContainer/>
             </div>
           </div>
         ) : (
@@ -371,13 +379,17 @@ function CourseDetail({ studentToken }) {
               courseVideos?.map((video, index) => (
                 <li className="list-group-item" key={index}>
                   {video.video_title}
+                  <a href={test1} download className="btn btn-sm btn-rounded btn-info mx-2 float-end">
+                   Resource <i><DownloadForOfflineIcon/></i>
+                 </a>
+
                   <button
-                    className="btn btn-sm btn-secondary float-end"
+                    className="btn btn-sm btn-secondary btn-rounded float-end"
                     onClick={() => {
                       openModelHandle();
                     }}
                   >
-                    Play
+                    Play <i><PlayCircleIcon/></i>
                   </button>
                   <BootstrapDialog
                     //  fullWidth={true}
@@ -508,7 +520,7 @@ function CourseDetail({ studentToken }) {
               <span style={{ marginRight: "20px" }}>Total Reviews:135</span>
               <Link to={`/addReviews/${course_id}`}>
                 <Button variant="contained" color="secondary">
-                  Add Your Review
+                  Add Review
                 </Button>
               </Link>
             </div>

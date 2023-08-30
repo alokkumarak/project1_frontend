@@ -6,7 +6,9 @@ import CardCarousel from "./CardCarousel";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { serverString } from "../utils/config";
-import banner1 from "../assets/banner1.png";
+import Ban1 from "../assets/Ban1.png";
+import Ban2 from "../assets/Ban2.png";
+import Ban3 from "../assets/Ban3.png";
 
 function Home() {
   const [limit, setlimit] = useState(10);
@@ -44,7 +46,7 @@ function Home() {
       <div
         id="carouselExampleIndicators"
         className="carousel slide"
-        style={{ height: "780px" }}
+        style={{ height: "650px" }}
       >
         <div className="carousel-indicators">
           <button
@@ -70,27 +72,27 @@ function Home() {
         </div>
 
         <div className="carousel-inner">
-          <div className="carousel-item active" style={{ height: "780px" }}>
+          <div className="carousel-item active" style={{ height: "650px" }}>
             <img
-              src={banner1}
+              src={Ban1}
               className="d-block w-100"
               style={{ height: "100%" }}
               alt="First slide"
             />
           </div>
 
-          <div className="carousel-item " style={{ height: "780px" }}>
+          <div className="carousel-item " style={{ height: "650px" }}>
             <img
-              src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+              src={Ban2}
               className="d-block w-100"
               style={{ height: "100%" }}
               alt="Second slide"
             />
           </div>
 
-          <div className="carousel-item" style={{ height: "780px" }}>
+          <div className="carousel-item" style={{ height: "650px" }}>
             <img
-              src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+              src={Ban3}
               className="d-block w-100"
               style={{ height: "100%" }}
               alt="Third slide"
